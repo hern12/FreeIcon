@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ./head %>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+</head>
+<body>
+	<div class="container">
+	    <div ng-app="FreeIcon">
+	    	<h1>Free Icon</h1>
+	    	<div ng-controller = "IconsController" ng-init ="listIcon()" class="">
+	   			<ul class = "item-list col-md-7 col-centered">
+					<li ng-repeat="t in imgUrl" class="col-md-2 col-md-offset-0">
+						<a href="#">
+							<img ng-src="{{t}}" alt="img01">
+						</a>
+					</li>
+				</ul>
+	    	</div>
+	    </div>
+	 </div><!-- container -->
+</body>
+<script type="text/javascript" src="./javascripts/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="./javascripts/angular.js"></script>
+<script>
+	var app = angular.module("FreeIcon",[]);
+	app.controller("IconsController",function($scope,$http){
+		$scope.title = "Hello Webboard";
+		$scope.Topics = [];
+		$scope.imgUrl = [];
+		$scope.Name = [];
+		$scope.listIcon = function(){
+			var url = "https://api.iconfinder.com/v2/icons/search?query=dog&count=100";
+			$http.get(url).success(function(data){
+			$scope.Topics = data;
+			for(var i = 0;i<$scope.Topics.icons.length;i++){
+				$scope.imgUrl.push($scope.Topics.icons[i].raster_sizes[5].formats[0].preview_url);
+				console.log($scope.imgUrl);
+			}
+			}).error(function(data){
+				alert("Error");
+			})
+		}
+	})
+</script>
+</html>
