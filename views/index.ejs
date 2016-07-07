@@ -7,13 +7,14 @@
 <body>
 	<div class="container">
 	    <div ng-app="FreeIcon">
-	    	<h1>Free Icon</h1>
+	    	<h1 class="HeadText">Free Icon</h1>
 	    	<div ng-controller = "IconsController" ng-init ="listIcon()" class="">
 	    		<div class="loader"></div>
-	   			<ul class = "item-list col-md-7 col-centered">
-					<li ng-repeat="t in imgUrl" class="col-md-2 col-md-offset-0">
-						<a href="#">
-							<img ng-src="{{t}}" alt="img01">
+	   			<ul class = "item-list row col-centered col-md-offset-0">
+					<li ng-repeat="t in imgUrl" class="col-md-1 list">
+						<a href="#" class="img-block">
+							<img ng-src="{{t}}" alt="img01" width ="64" height ="64"class="img-center">
+							<button class="btn btn-primary button-center">DOWNLOAD</button>
 						</a>
 					</li>
 				</ul>
@@ -31,18 +32,36 @@
 		$scope.imgUrl = [];
 		$scope.Name = [];
 		$scope.listIcon = function(){
-			var url = "https://api.iconfinder.com/v2/icons/search?query=dog&count=100";
+			var url = "https://api.iconfinder.com/v2/icons/search?query=dog&count=100&premium=0";
 			$http.get(url).success(function(data){
 			$scope.Topics = data;
+			//console.log($scope.Topics.icons[6].raster_sizes[4]);
+			// console.log($scope.Topics.icons[1].raster_sizes[1].size_width);
+
 			for(var i = 0;i<$scope.Topics.icons.length;i++){
-				$scope.imgUrl.push($scope.Topics.icons[i].raster_sizes[5].formats[0].preview_url);
-				console.log($scope.imgUrl);
+				if($scope.Topics.icons[i].raster_sizes[4] != undefined){
+					$scope.imgUrl.push($scope.Topics.icons[i].raster_sizes[4].formats[0].preview_url);
+					//console.log("define"+i);
+				}
+				if($scope.Topics.icons[i].raster_sizes[4] == undefined){
+					for(var j = 0;j<$scope.Topics.icons[i].raster_sizes.length;j++){
+						if($scope.Topics.icons[i].raster_sizes[j].size_width == 128){
+							$scope.imgUrl.push($scope.Topics.icons[i].raster_sizes[j].formats[0].preview_url);
+						}
+				    }
+				}
+				
+				
+				//console.log($scope.imgUrl);
+				//console.log($scope.Topics.icons[7]);
 			}
 			$(".loader").hide();
+			console.log($scope.imgUrl.length);
 			}).error(function(data){
 				alert("Error");
 			})
 		}
 	})
+
 </script>
 </html>
