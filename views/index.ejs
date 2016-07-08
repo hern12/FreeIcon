@@ -7,8 +7,13 @@
 <body>
 	<div class="container">
 	    <div ng-app="FreeIcon">
-	    	<h1 class="HeadText">Free Icon</h1>
-	    	<div ng-controller = "IconsController" ng-init ="listIcon()" class="">
+	    	<h1 class="HeadText">แจก Icon ฟรี!!</h1>
+	    	<div ng-controller = "IconsController" class=""> <!--ng-init ="listIcon()"--> 
+	    		<div class="form-group">
+				  <input type="text" class="form-control search" id="search" ng-init ="listIcon()"ng-model="post.PostId" placeholder="Search">
+				  <button class="btn btn-primary btnSearch" ng-click="listIcon(post.PostId);">Search</button>
+				  </input>
+				</div>
 	    		<div class="loader"></div>
 	   			<ul class = "item-list row col-centered col-md-offset-0">
 					<li ng-repeat="t in imgUrl" class="col-md-1 list">
@@ -18,6 +23,13 @@
 						</a>
 					</li>
 				</ul>
+				<center>
+					<div class="container">
+						<ul class="pagination pagination-lg">
+								
+						</ul>
+					</div>
+				</center>
 	    	</div>
 	    </div>
 	 </div><!-- container -->
@@ -31,35 +43,94 @@
 		$scope.Topics = [];
 		$scope.imgUrl = [];
 		$scope.Name = [];
-		$scope.listIcon = function(){
-			var url = "https://api.iconfinder.com/v2/icons/search?query=dog&count=100&premium=0";
-			$http.get(url).success(function(data){
-			$scope.Topics = data;
-			//console.log($scope.Topics.icons[6].raster_sizes[4]);
-			// console.log($scope.Topics.icons[1].raster_sizes[1].size_width);
-
-			for(var i = 0;i<$scope.Topics.icons.length;i++){
-				if($scope.Topics.icons[i].raster_sizes[4] != undefined){
-					$scope.imgUrl.push($scope.Topics.icons[i].raster_sizes[4].formats[0].preview_url);
-					//console.log("define"+i);
-				}
-				if($scope.Topics.icons[i].raster_sizes[4] == undefined){
-					for(var j = 0;j<$scope.Topics.icons[i].raster_sizes.length;j++){
-						if($scope.Topics.icons[i].raster_sizes[j].size_width == 128){
-							$scope.imgUrl.push($scope.Topics.icons[i].raster_sizes[j].formats[0].preview_url);
-						}
-				    }
-				}
-				
-				
-				//console.log($scope.imgUrl);
-				//console.log($scope.Topics.icons[7]);
+		$(".loader").hide();
+		$scope.listIcon = function(searchText){
+			if(searchText == null ||searchText == undefined){
+				searchText ="search";
 			}
-			$(".loader").hide();
-			console.log($scope.imgUrl.length);
+			$(".loader").show();
+			console.log(searchText);
+			$scope.imgUrl = [];
+			var url = "https://api.iconfinder.com/v2/icons/search?query="+searchText+"&count=100&premium=0";
+			$http.get(url).success(function(data){
+			placeData(data)
+			var totalCount = $scope.Topics.total_count;
+			var caculatePage = totalCount/100;
+			var intvalue = Math.floor( caculatePage );
+			var numberIcon = 1;
+			for(var page = 1;page<=intvalue;page++){
+				numberIcon = numberIcon +100;
+				console.log(numberIcon);
+				$('.pagination').append("<li><a href=# class=number"+page+" value="+numberIcon+">"+page+"</a></li>");
+				$(".number"+page).click(function(){
+					$scope.imgUrl = [];
+					$(".loader").show();
+					$(".pagination").hide();
+					var url = "https://api.iconfinder.com/v2/icons/search?query="+searchText+"&count=100&premium=0&offset=";
+					url += ($(this).attr("value"));
+					$http.get(url).success(function(data){
+						placeData(data);
+						$(".pagination").show();
+					});
+					console.log($(this).attr("class"));
+				});
+			}
+			if($scope.Topics.total_count == 0){
+				alert("ไม่มี Icon ที่คุณตามหา");
+			}
+			// for(var i = 0;i<$scope.Topics.icons.length;i++){
+			// 		for(var j = 0;j<$scope.Topics.icons[i].raster_sizes.length;j++){
+			// 			var rasterSize = $scope.Topics.icons[i].raster_sizes[j].size_width;
+			// 			var previewuUrl = $scope.Topics.icons[i].raster_sizes[j].formats[0].preview_url;
+			// 			if(rasterSize === 512){
+			// 			    $scope.imgUrl.push(previewuUrl);
+			// 				break;
+			// 			}
+			// 			if(rasterSize === 256){
+			// 			    $scope.imgUrl.push(previewuUrl);
+			// 				break;
+			// 			}
+			// 			if(rasterSize === 128){
+			// 			    $scope.imgUrl.push(previewuUrl);
+			// 				break;
+			// 			}
+			// 			if(rasterSize === 64){
+			// 			    $scope.imgUrl.push(previewuUrl);
+			// 				break;
+			// 			}
+			// 		}
+			// }
+			//console.log($scope.imgUrl.length);
 			}).error(function(data){
 				alert("Error");
 			})
+		}
+
+		function placeData(data){
+			$scope.Topics = data;
+			for(var i = 0;i<$scope.Topics.icons.length;i++){
+				for(var j = 0;j<$scope.Topics.icons[i].raster_sizes.length;j++){
+					var rasterSize = $scope.Topics.icons[i].raster_sizes[j].size_width;
+					var previewuUrl = $scope.Topics.icons[i].raster_sizes[j].formats[0].preview_url;
+					if(rasterSize === 512){
+						$scope.imgUrl.push(previewuUrl);
+						break;
+					}
+					if(rasterSize === 256){
+						$scope.imgUrl.push(previewuUrl);
+						break;
+					}
+					if(rasterSize === 128){
+						$scope.imgUrl.push(previewuUrl);
+						break;
+					}
+					if(rasterSize === 64){
+						$scope.imgUrl.push(previewuUrl);
+						break;
+					}
+				}
+			}
+			$(".loader").hide();
 		}
 	})
 

@@ -6,6 +6,16 @@ body {
 a {
   color: #00B7FF;
 }
+.search{
+  display: block;
+  margin: 0 auto;
+  width:50%;
+}
+.btnSearch{
+  position:absolute;
+  left: 1175px;
+  top: 120px;
+}
 .list{
   list-style-type: none;
   margin: 10px 20px 10px 20px;
@@ -25,19 +35,17 @@ a {
   left:-21px;
 }
 .loader {
+
   border: 16px solid #f3f3f3;
   border-radius: 50%;
   border-top: 16px solid #3498db;
   width: 120px;
   height: 120px;
 
-    position: absolute;
-    top:0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    position: relative;
+    top:150px;
+    left: 500px;
 
-    margin: auto;
   -webkit-animation: spin 2s linear infinite;
   animation: spin 2s linear infinite;
 }
