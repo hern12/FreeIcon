@@ -51,17 +51,19 @@
 			$(".loader").show();
 			console.log(searchText);
 			$scope.imgUrl = [];
+			$('.pagination').children().remove();
 			var url = "https://api.iconfinder.com/v2/icons/search?query="+searchText+"&count=100&premium=0";
 			$http.get(url).success(function(data){
-			placeData(data)
+			placeData(data);
+
+
 			var totalCount = $scope.Topics.total_count;
 			var caculatePage = totalCount/100;
 			var intvalue = Math.floor( caculatePage );
 			var numberIcon = 1;
 			for(var page = 1;page<=intvalue;page++){
-				numberIcon = numberIcon +100;
-				console.log(numberIcon);
 				$('.pagination').append("<li><a href=# class=number"+page+" value="+numberIcon+">"+page+"</a></li>");
+				numberIcon = numberIcon +100;
 				$(".number"+page).click(function(){
 					$scope.imgUrl = [];
 					$(".loader").show();
@@ -72,7 +74,6 @@
 						placeData(data);
 						$(".pagination").show();
 					});
-					console.log($(this).attr("class"));
 				});
 			}
 			if($scope.Topics.total_count == 0){
