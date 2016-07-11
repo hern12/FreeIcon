@@ -6,16 +6,6 @@ body {
 a {
   color: #00B7FF;
 }
-.search{
-  display: block;
-  margin: 0 auto;
-  width:50%;
-}
-.btnSearch{
-  position:absolute;
-  left: 1175px;
-  top: 120px;
-}
 .list{
   list-style-type: none;
   margin: 10px 20px 10px 20px;
@@ -34,17 +24,59 @@ a {
   position: relative;
   left:-21px;
 }
-.loader {
+form {
+  width:500px;
+  margin:50px auto;
+}
+.search{
+  width:400px;
+  padding:8px 15px;
+  background:rgba(50, 50, 50, 0.2);
+  border:0px solid #dbdbdb;
+}
+.button{
+  position:relative;
+  padding:6px 15px;
+  left:-8px;
+  border:2px solid #207cca;
+  background-color:#207cca;
+  color:#fafafa;
+  
+}
 
+.button:hover{
+  background-color:#fafafa;
+  color:#207cca;
+}
+.arrow{
+  position: relative;;
+  left:-8px;
+  background:#207cca;
+  padding:8px 15px;
+}
+.arrow:after{
+  right: 100%;
+  top:50%;
+  border:solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  border-color:rgba(32,124,202,0);
+  border-right-color:#207cca;
+  border-width:10px;
+  margin-top:-10px;
+}
+.loader {
   border: 16px solid #f3f3f3;
   border-radius: 50%;
   border-top: 16px solid #3498db;
   width: 120px;
   height: 120px;
 
-    position: relative;
+/*    position: relative;
     top:150px;
-    left: 500px;
+    left: 500px;*/
 
   -webkit-animation: spin 2s linear infinite;
   animation: spin 2s linear infinite;

@@ -10,11 +10,13 @@
 	    	<h1 class="HeadText">แจก Icon ฟรี!!</h1>
 	    	<div ng-controller = "IconsController" class=""> <!--ng-init ="listIcon()"--> 
 	    		<div class="form-group">
-				  <input type="text" class="form-control search" id="search" ng-init ="listIcon()"ng-model="post.PostId" placeholder="Search">
-				  <button class="btn btn-primary btnSearch" ng-click="listIcon(post.PostId);">Search</button>
-				  </input>
+				    <form>
+                       <input type="text" class="search" ng-init ="listIcon()"ng-model="post.PostId" placeholder="Search..." required>
+                       <span class="arrow">
+                       <input type="button"class="button" ng-click="listIcon(post.PostId);" value="Search">
+                   	   </span>
+		            </form>
 				</div>
-	    		<div class="loader"></div>
 	   			<ul class = "item-list row col-centered col-md-offset-0">
 					<li ng-repeat="t in imgUrl" class="col-md-1 list">
 						<a href="#" class="img-block">
@@ -23,13 +25,7 @@
 						</a>
 					</li>
 				</ul>
-				<center>
-					<div class="container">
-						<ul class="pagination pagination-lg">
-								
-						</ul>
-					</div>
-				</center>
+				<center><div class="loader"></div></center>
 	    	</div>
 	    </div>
 	 </div><!-- container -->
@@ -43,67 +39,60 @@
 		$scope.Topics = [];
 		$scope.imgUrl = [];
 		$scope.Name = [];
+		var numberIcon = 1;
+		var countShow = 1;
 		$(".loader").hide();
 		$scope.listIcon = function(searchText){
+			$scope.imgUrl = [];
 			if(searchText == null ||searchText == undefined){
 				searchText ="search";
 			}
 			$(".loader").show();
-			console.log(searchText);
-			$scope.imgUrl = [];
-			$('.pagination').children().remove();
 			var url = "https://api.iconfinder.com/v2/icons/search?query="+searchText+"&count=100&premium=0";
 			$http.get(url).success(function(data){
 			placeData(data);
-
-
 			var totalCount = $scope.Topics.total_count;
-			var caculatePage = totalCount/100;
-			var intvalue = Math.floor( caculatePage );
-			var numberIcon = 1;
-			for(var page = 1;page<=intvalue;page++){
-				$('.pagination').append("<li><a href=# class=number"+page+" value="+numberIcon+">"+page+"</a></li>");
-				numberIcon = numberIcon +100;
-				$(".number"+page).click(function(){
-					$scope.imgUrl = [];
-					$(".loader").show();
-					$(".pagination").hide();
-					var url = "https://api.iconfinder.com/v2/icons/search?query="+searchText+"&count=100&premium=0&offset=";
-					url += ($(this).attr("value"));
-					$http.get(url).success(function(data){
-						placeData(data);
-						$(".pagination").show();
-					});
-				});
-			}
+			console.log(totalCount);
+			console.log($scope.imgUrl);
+			var caculateTotalrang = Math.floor(totalCount/100);
+			$(window).scroll(function(e) {
+					if(numberIcon <= caculateTotalrang){
+					    if($(window).scrollTop() == $(document).height() - $(window).height()) {
+					    	  $(".loader").show();
+					          countShow = countShow +100;
+					          var url = "https://api.iconfinder.com/v2/icons/search?query="+searchText+"&count=100&premium=0&offset=";
+					          url += ""+countShow;
+					          console.log(url);
+					          $http.get(url).success(function(data){
+								placeData(data);
+							  });
+							  numberIcon++;
+					    }
+					}
+				e.preventDefault();
+			});
+			
+			// for(var page = 1;page<=intvalue;page++){
+			// 	$('.pagination').append("<li><a href=# class=number"+page+" value="+numberIcon+">"+page+"</a></li>");
+			// 	numberIcon = numberIcon +100;
+			// 	$(".number"+page).click(function(){
+			// 		$scope.imgUrl = [];
+			// 		$(".loader").show();
+			// 		$(".pagination").hide();
+			// 		var url = "https://api.iconfinder.com/v2/icons/search?query="+searchText+"&count=100&premium=0&offset=";
+			// 		url += ($(this).attr("value"));
+			// 		$http.get(url).success(function(data){
+			// 			placeData(data);
+			// 			$(".pagination").show();
+			// 		});
+			// 	});
+			// }
 			if($scope.Topics.total_count == 0){
 				alert("ไม่มี Icon ที่คุณตามหา");
 			}
-			// for(var i = 0;i<$scope.Topics.icons.length;i++){
-			// 		for(var j = 0;j<$scope.Topics.icons[i].raster_sizes.length;j++){
-			// 			var rasterSize = $scope.Topics.icons[i].raster_sizes[j].size_width;
-			// 			var previewuUrl = $scope.Topics.icons[i].raster_sizes[j].formats[0].preview_url;
-			// 			if(rasterSize === 512){
-			// 			    $scope.imgUrl.push(previewuUrl);
-			// 				break;
-			// 			}
-			// 			if(rasterSize === 256){
-			// 			    $scope.imgUrl.push(previewuUrl);
-			// 				break;
-			// 			}
-			// 			if(rasterSize === 128){
-			// 			    $scope.imgUrl.push(previewuUrl);
-			// 				break;
-			// 			}
-			// 			if(rasterSize === 64){
-			// 			    $scope.imgUrl.push(previewuUrl);
-			// 				break;
-			// 			}
-			// 		}
-			// }
-			//console.log($scope.imgUrl.length);
 			}).error(function(data){
-				alert("Error");
+				
+				location.reload();
 			})
 		}
 
