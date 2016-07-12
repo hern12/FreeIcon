@@ -5,7 +5,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 </head>
 <body>
-	<div class="container">
+	<div class="container-fluid bg">
 	    <div ng-app="FreeIcon">
 	    	<h1 class="HeadText">แจก Icon ฟรี!!</h1>
 	    	<div ng-controller = "IconsController" class=""> <!--ng-init ="listIcon()"--> 
@@ -18,10 +18,10 @@
 		            </form>
 				</div>
 	   			<ul class = "item-list row col-centered col-md-offset-0">
-					<li ng-repeat="t in imgUrl" class="col-md-1 list">
+					<li ng-repeat="t in imgUrl" class="col-md-2 list">
 						<a href="#" class="img-block">
-							<img ng-src="{{t}}" alt="img01" width ="64" height ="64"class="img-center">
-							<button class="btn btn-primary button-center">DOWNLOAD</button>
+							<img ng-src="{{t}}" alt="img01" width ="128" height ="128"class="img-center">
+							<!-- <button class="btn btn-primary button-center">DOWNLOAD</button> -->
 						</a>
 					</li>
 				</ul>
@@ -114,10 +114,10 @@
 						$scope.imgUrl.push(previewuUrl);
 						break;
 					}
-					if(rasterSize === 64){
-						$scope.imgUrl.push(previewuUrl);
-						break;
-					}
+					// if(rasterSize === 64){
+					// 	$scope.imgUrl.push(previewuUrl);
+					// 	break;
+					// }
 				}
 			}
 			$(".loader").hide();

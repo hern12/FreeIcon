@@ -2,34 +2,56 @@ body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
-
+.bg{
+  background-color: #eaeaea;
+}
+.item-list{
+  width: 100%;
+}
 a {
   color: #00B7FF;
 }
 .list{
   list-style-type: none;
   margin: 10px 20px 10px 20px;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+  -o-transition:.5s;
+  -ms-transition:.5s;
+  -moz-transition:.5s;
+  -webkit-transition:.5s;
+  /* ...and now for the proper property */
+  transition:.5s;
+}
+.list:hover{
+  background-color: #1abc9c;
+  opacity: 0.8;
+  filter: alpha(opacity=50);
 }
 .HeadText{
   text-align: center;
 }
 .img-block{
-  width: 100%;
+  width: 128px;
+  height: 198px;
 }
 .img-center{
   display: block;
-  margin-bottom: 10px;
+  margin:0 auto;
+  padding: 35px 0px 35px 0px;
+  width: 128px;
+  height: 198px;
 }
 .button-center{
-  position: relative;
-  left:-21px;
+width: 100%;
 }
 form {
-  width:500px;
+  width:700px;
   margin:50px auto;
 }
 .search{
-  width:400px;
+  width:600px;
+  height: 50px;
   padding:8px 15px;
   background:rgba(50, 50, 50, 0.2);
   border:0px solid #dbdbdb;
@@ -41,31 +63,12 @@ form {
   border:2px solid #207cca;
   background-color:#207cca;
   color:#fafafa;
-  
+  height: 50px;
 }
 
 .button:hover{
   background-color:#fafafa;
   color:#207cca;
-}
-.arrow{
-  position: relative;;
-  left:-8px;
-  background:#207cca;
-  padding:8px 15px;
-}
-.arrow:after{
-  right: 100%;
-  top:50%;
-  border:solid transparent;
-  content: " ";
-  height: 0;
-  width: 0;
-  position: absolute;
-  border-color:rgba(32,124,202,0);
-  border-right-color:#207cca;
-  border-width:10px;
-  margin-top:-10px;
 }
 .loader {
   border: 16px solid #f3f3f3;
