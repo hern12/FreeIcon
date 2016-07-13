@@ -21,18 +21,35 @@
 				</center>
 	   			<ul class = "item-list row col-centered col-md-offset-0">
 					<li ng-repeat="t in imgUrl" class="col-md-2 list">
-						<a href="#" class="img-block">
-							<img ng-src="{{t}}" alt="img01"class="img-center" onerror="imgError(this);">
+						<a href="#" class="img-block"  data-toggle="modal" data-target="#myModal">
+							<img ng-src="{{t}}" alt="img01"class="img-center" onerror="imgError(this);" >
 							<!-- <button class="btn btn-primary button-center">DOWNLOAD</button> -->
 						</a>
 					</li>
 				</ul>
 				<center><div class="loader"></div></center>
+				<!-- Modal -->
+				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+				      </div>
+				      <div class="modal-body">
+				        ...
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				        <button type="button" class="btn btn-primary">Save changes</button>
+				      </div>
+				    </div>
+				  </div>
+				</div>
 	    	</div>
 	    </div>
 	 </div><!-- container -->
 </body>
-<script type="text/javascript" src="./javascripts/jquery-1.12.4.js"></script>
 <script type="text/javascript" src="./javascripts/angular.js"></script>
 <script>
 	var app = angular.module("FreeIcon",[]);
@@ -46,11 +63,12 @@
 		var checkText = "";
 		$(".loader").hide();
 		$scope.listIcon = function(searchText){
+			countShow = 1;
 			$scope.imgUrl = [];
 			checkText = searchText;
-			// if(searchText == null ||searchText == undefined){
-			// 	searchText ="search";
-			// }
+			if(checkText == null ||checkText == undefined){
+				checkText ="search";
+			}
 			$(".loader").show();
 			var url = "https://api.iconfinder.com/v2/icons/search?query="+checkText+"&count=100&premium=0";
 			$http.get(url).success(function(data){
@@ -63,7 +81,8 @@
 					if(numberIcon <= caculateTotalrang){
 					    if($(window).scrollTop() >= $(document).height() - $(window).height()) {
 					    	  $(".loader").show();
-					          countShow = countShow +100;					  
+					          countShow = countShow +100;
+					          console.log(countShow);			  
 					          var url = "https://api.iconfinder.com/v2/icons/search?query="+checkText+"&count=100&premium=0&offset=";
 					          url += ""+countShow;
 					          //console.log(url);
@@ -132,8 +151,11 @@
 		}
 	})
 	function imgError(image){
-	 	image.parent().remove();
+	 	// image.parent().remove();
+	 	 event.stopPropagation();
+    	 $(image).parent().parent().hide();
 	}
+
 </script>
 <script type="text/javascript">
 	(function($) {
@@ -142,9 +164,11 @@
         console.log($window );
     function resize() {
         if ($window.width() <= 1280) {
-        	console.log($col);
         	$col.removeClass('col-md-offset-0');
             return $col.addClass('col-md-offset-1');
+        }else{
+        	$col.removeClass('col-md-offset-1');
+            return $col.addClass('col-md-offset-0');
         }
     }
 
