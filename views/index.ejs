@@ -21,7 +21,7 @@
 				</center>
 	   			<ul class = "item-list row col-centered col-md-offset-0">
 					<li ng-repeat="t in imgUrl" class="col-md-2 list">
-						<a href="#" class="img-block"  data-toggle="modal" data-target="#myModal">
+						<a href="#" class="img-block" onclick="showImageInModal(this);" data-toggle="modal" data-target="#myModal">
 							<img ng-src="{{t}}" alt="img01"class="img-center" onerror="imgError(this);" >
 							<!-- <button class="btn btn-primary button-center">DOWNLOAD</button> -->
 						</a>
@@ -36,8 +36,8 @@
 				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 				        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
 				      </div>
-				      <div class="modal-body">
-				        ...
+				      <div class="modal-body showImg">
+				        <img class="mdImg"src="">
 				      </div>
 				      <div class="modal-footer">
 				        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -97,21 +97,6 @@
 					}
 				e.preventDefault();
 			})
-			// for(var page = 1;page<=intvalue;page++){
-			// 	$('.pagination').append("<li><a href=# class=number"+page+" value="+numberIcon+">"+page+"</a></li>");
-			// 	numberIcon = numberIcon +100;
-			// 	$(".number"+page).click(function(){
-			// 		$scope.imgUrl = [];
-			// 		$(".loader").show();
-			// 		$(".pagination").hide();
-			// 		var url = "https://api.iconfinder.com/v2/icons/search?query="+searchText+"&count=100&premium=0&offset=";
-			// 		url += ($(this).attr("value"));
-			// 		$http.get(url).success(function(data){
-			// 			placeData(data);
-			// 			$(".pagination").show();
-			// 		});
-			// 	});
-			// }
 			if($scope.Topics.total_count == 0){
 				alert("ไม่มี Icon ที่คุณตามหา");
 			}
@@ -155,7 +140,10 @@
 	 	 event.stopPropagation();
     	 $(image).parent().parent().hide();
 	}
-
+	function showImageInModal(imageLink){
+		var getImg = $(imageLink).children().attr("ng-src");
+		$(".mdImg").attr("src",""+getImg+"");
+	}
 </script>
 <script type="text/javascript">
 	(function($) {
@@ -171,10 +159,10 @@
             return $col.addClass('col-md-offset-0');
         }
     }
-
     $window
         .resize(resize)
         .trigger('resize');
 })(jQuery);
+
 </script>
 </html>
