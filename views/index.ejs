@@ -20,10 +20,10 @@
 				</div>
 				</center>
 	   			<ul class = "item-list row col-centered col-md-offset-0">
-					<li ng-repeat="t in imgUrl" class="col-md-2 list">
+					<li ng-repeat="data in datas" class="col-md-2 list">
 						<a href="#" class="img-block" onclick="showImageInModal(this);" data-toggle="modal" data-target="#myModal">
-							<img ng-src="{{t}}" alt="img01"class="img-center" onerror="imgError(this);" >
-							<!-- <button class="btn btn-primary button-center">DOWNLOAD</button> -->
+							<img ng-src="{{data.imgUrl}}" alt="img01"class="img-center" onerror="imgError(this);" >
+							<h4 class="hideDataName">{{data.name}}</h4>
 						</a>
 					</li>
 				</ul>
@@ -34,10 +34,10 @@
 				    <div class="modal-content">
 				      <div class="modal-header">
 				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+				        <center><h4 class="modal-title" id="myModalLabel"></h4></center>
 				      </div>
 				      <div class="modal-body showImg">
-				        <img class="mdImg"src="">
+				        <center><img class="mdImg"src=""></center>
 				      </div>
 				      <div class="modal-footer">
 				        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -58,6 +58,10 @@
 		$scope.Topics = [];
 		$scope.imgUrl = [];
 		$scope.Name = [];
+		$scope.datas = [];
+		console.log($scope.datas)
+		$scope.adding = [];
+		console.log($scope.datas);
 		var numberIcon = 1;
 		var countShow = 1;
 		var checkText = "";
@@ -67,23 +71,24 @@
 			$scope.imgUrl = [];
 			checkText = searchText;
 			if(checkText == null ||checkText == undefined){
-				checkText ="search";
+				checkText ="icon";
 			}
 			$(".loader").show();
-			var url = "https://api.iconfinder.com/v2/icons/search?query="+checkText+"&count=100&premium=0";
+			var url = "https://api.iconfinder.com/v2/icons/search?query="+checkText+"&count=30&premium=0";
 			$http.get(url).success(function(data){
 			//console.log(searchText);
+			console.log(data);
 			placeData(data);
 			var totalCount = $scope.Topics.total_count;
 			
-			var caculateTotalrang = Math.floor(totalCount/100);
+			var caculateTotalrang = Math.floor(totalCount/30);
 			$(window).scroll(function(e) {
 					if(numberIcon <= caculateTotalrang){
 					    if($(window).scrollTop() >= $(document).height() - $(window).height()) {
 					    	  $(".loader").show();
-					          countShow = countShow +100;
+					          countShow = countShow +30;
 					          console.log(countShow);			  
-					          var url = "https://api.iconfinder.com/v2/icons/search?query="+checkText+"&count=100&premium=0&offset=";
+					          var url = "https://api.iconfinder.com/v2/icons/search?query="+checkText+"&count=30&premium=0&offset=";
 					          url += ""+countShow;
 					          //console.log(url);
 					          $http.get(url).success(function(data){
@@ -112,22 +117,33 @@
 				for(var j = 0;j<$scope.Topics.icons[i].raster_sizes.length;j++){
 					var rasterSize = $scope.Topics.icons[i].raster_sizes[j].size_width;
 					var previewuUrl = $scope.Topics.icons[i].raster_sizes[j].formats[0].preview_url;
+					var iconName = $scope.Topics.icons[i].categories[0].name;
 					if(previewuUrl){
 						if(rasterSize === 512){
 							$scope.imgUrl.push(previewuUrl);
+							$scope.Name.push(iconName);
 							break;
 						}
 						if(rasterSize === 256){
 							$scope.imgUrl.push(previewuUrl);
+							$scope.Name.push(iconName);
 							break;
 						}
 						if(rasterSize === 128){
 							$scope.imgUrl.push(previewuUrl);
+							$scope.Name.push(iconName);
+							$scope.datas.push({
+								imgUrl:previewuUrl,
+								name:iconName
+							})
 							break;
 						}
 					}
 				}
 			}
+			//$scope.datas.Name.push($scope.Name);
+			
+			console.log($scope.datas);
 			$(".loader").hide();
 		}
 	})
@@ -138,7 +154,9 @@
 	}
 	function showImageInModal(imageLink){
 		var getImg = $(imageLink).children().attr("ng-src");
+		var getName = $(imageLink).children().text();
 		$(".mdImg").attr("src",""+getImg+"");
+		$("#myModalLabel").text(""+getName+"");
 	}
 </script>
 <script type="text/javascript">
