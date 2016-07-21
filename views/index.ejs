@@ -40,8 +40,12 @@
 				        <center><img class="mdImg"src=""></center>
 				      </div>
 				      <div class="modal-footer">
-				        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				        <button type="button" class="btn btn-primary">Save changes</button>
+				      	<button type="button" class="btn btn-default" data-dismiss="modal">PNG</button>
+				      
+				      </div>
+				      <div class="modal-footer">
+				      	<button type="button" class="btn btn-default" data-dismiss="modal">PNG</button>
+				      
 				      </div>
 				    </div>
 				  </div>
@@ -118,24 +122,24 @@
 					var rasterSize = $scope.Topics.icons[i].raster_sizes[j].size_width;
 					var previewuUrl = $scope.Topics.icons[i].raster_sizes[j].formats[0].preview_url;
 					var iconName = $scope.Topics.icons[i].categories[0].name;
+					console.log($scope.Topics.icons[i]);
 					if(previewuUrl){
 						if(rasterSize === 512){
 							$scope.imgUrl.push(previewuUrl);
 							$scope.Name.push(iconName);
+							getData(previewuUrl,iconName);
 							break;
 						}
 						if(rasterSize === 256){
 							$scope.imgUrl.push(previewuUrl);
 							$scope.Name.push(iconName);
+							getData(previewuUrl,iconName);
 							break;
 						}
 						if(rasterSize === 128){
 							$scope.imgUrl.push(previewuUrl);
 							$scope.Name.push(iconName);
-							$scope.datas.push({
-								imgUrl:previewuUrl,
-								name:iconName
-							})
+							getData(previewuUrl,iconName);
 							break;
 						}
 					}
@@ -145,6 +149,12 @@
 			
 			console.log($scope.datas);
 			$(".loader").hide();
+		}
+		function getData(previewuUrl,iconName){
+			$scope.datas.push({
+								imgUrl:previewuUrl,
+								name:iconName
+							})
 		}
 	})
 	function imgError(image){

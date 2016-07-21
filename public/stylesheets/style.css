@@ -104,3 +104,6 @@ form {
 .hideDataName{
   display: none;
 }
+.modal-footer{
+  text-align: left !important;
+}
