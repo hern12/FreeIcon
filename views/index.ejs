@@ -14,7 +14,7 @@
 				    <form>
                        <input type="text" class="search" ng-init ="listIcon()"ng-model="post.PostId" placeholder="Search..." required>
                        <span class="arrow">
-                       <input type="button"class="button" ng-click="listIcon(post.PostId);" value="Search">
+                       <input type="button" class="button" ng-click="listIcon(post.PostId);" value="Search">
                    	   </span>
 		            </form>
 				</div>
@@ -24,6 +24,9 @@
 						<a href="#" class="img-block" onclick="showImageInModal(this);" data-toggle="modal" data-target="#myModal">
 							<img ng-src="{{data.imgUrl}}" alt="img01"class="img-center" onerror="imgError(this);" >
 							<h4 class="hideDataName">{{data.name}}</h4>
+							<div class="" ng-repeat="link in data.linkDownloadPngFile track by $index">
+								<a style="display:none;">{{link}}</a>
+							</div>
 						</a>
 					</li>
 				</ul>
@@ -41,7 +44,7 @@
 				      </div>
 				      <div class="modal-footer">
 				      	<button type="button" class="btn btn-default" data-dismiss="modal">PNG</button>
-				      
+				        
 				      </div>
 				      <div class="modal-footer">
 				      	<button type="button" class="btn btn-default" data-dismiss="modal">PNG</button>
@@ -60,8 +63,6 @@
 	app.controller("IconsController",function($scope,$http){
 		$scope.title = "Hello Webboard";
 		$scope.Topics = [];
-		$scope.imgUrl = [];
-		$scope.Name = [];
 		$scope.datas = [];
 		console.log($scope.datas)
 		$scope.adding = [];
@@ -69,8 +70,10 @@
 		var numberIcon = 1;
 		var countShow = 1;
 		var checkText = "";
+		var linkDownloadPng = [];
 		$(".loader").hide();
 		$scope.listIcon = function(searchText){
+			$scope.datas = [];
 			countShow = 1;
 			$scope.imgUrl = [];
 			checkText = searchText;
@@ -84,7 +87,7 @@
 			console.log(data);
 			placeData(data);
 			var totalCount = $scope.Topics.total_count;
-			
+			console.log(data);
 			var caculateTotalrang = Math.floor(totalCount/30);
 			$(window).scroll(function(e) {
 					if(numberIcon <= caculateTotalrang){
@@ -122,39 +125,42 @@
 					var rasterSize = $scope.Topics.icons[i].raster_sizes[j].size_width;
 					var previewuUrl = $scope.Topics.icons[i].raster_sizes[j].formats[0].preview_url;
 					var iconName = $scope.Topics.icons[i].categories[0].name;
-					console.log($scope.Topics.icons[i]);
+					var downloadUrlName = "https://api.iconfinder.com";
+					downloadUrlName += $scope.Topics.icons[i].raster_sizes[j].formats[0].download_url
+					linkDownloadPng.push(downloadUrlName);
 					if(previewuUrl){
 						if(rasterSize === 512){
-							$scope.imgUrl.push(previewuUrl);
-							$scope.Name.push(iconName);
-							getData(previewuUrl,iconName);
+							getData(previewuUrl,iconName,linkDownloadPng);
+							//console.log(linkDownloadPng);
 							break;
 						}
 						if(rasterSize === 256){
-							$scope.imgUrl.push(previewuUrl);
-							$scope.Name.push(iconName);
-							getData(previewuUrl,iconName);
+							getData(previewuUrl,iconName,linkDownloadPng);
+							//console.log(linkDownloadPng);
 							break;
 						}
 						if(rasterSize === 128){
-							$scope.imgUrl.push(previewuUrl);
-							$scope.Name.push(iconName);
-							getData(previewuUrl,iconName);
+							getData(previewuUrl,iconName,linkDownloadPng);
+							//console.log(linkDownloadPng);
 							break;
 						}
 					}
 				}
+				console.log("cut");
+				linkDownloadPng = [];
 			}
 			//$scope.datas.Name.push($scope.Name);
 			
 			console.log($scope.datas);
 			$(".loader").hide();
 		}
-		function getData(previewuUrl,iconName){
+		function getData(previewuUrl,iconName,linkDownloadPng){
 			$scope.datas.push({
 								imgUrl:previewuUrl,
-								name:iconName
+								name:iconName,
+								linkDownloadPngFile:linkDownloadPng
 							})
+			console.log($scope.datas);
 		}
 	})
 	function imgError(image){
