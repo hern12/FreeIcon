@@ -41,11 +41,11 @@
 				        <center><img class="mdImg" src=""></center>
 				      </div>
 				      <div class="modal-footer PNG">
-				      	<button type="button" class="btn btn-default" data-dismiss="modal">PNG</button>
+				      	<button type="button" class="btn btn-success" data-dismiss="modal">PNG</button>
 				        
 				      </div>
 				      <div class="modal-footer">
-				      	<button type="button" class="btn btn-default" data-dismiss="modal">PNG</button>
+				      	<button type="button" class="btn btn-success" data-dismiss="modal">SVF</button>
 				      
 				      </div>
 				    </div>
@@ -169,15 +169,28 @@
 		var getImg = $(imageLink).children().attr("ng-src");
 		var getName = $(imageLink).children().text();
 		var getLink = $(imageLink).find(".dataLink").data('locations');
-		var pushSortNumber = [];
+		var changToInt=[];
+		var getSize = [];
+		var joining;
 		for(var i=0;i<getLink.length;i++){
-			var getSize = getLink.sort();
-			console.log(getSize);
-			$(".PNG").append("<a src=><button class=btn btn-primary></button></a>");
+			getSize = getLink[i].split("/");
+			changToInt.push(parseInt(getSize[8]));
 		}
+		var sorting = changToInt.sort(function(a, b){return a-b});
+		console.log(sorting);
+		for(var j = 0;j<sorting.length;j++){
+			getSize[8] = ""+sorting[j];
+			joining = getSize.join("/");
+			$(".PNG").append("<a class=link src="+joining+"><button class='btn btn-primary'>"+sorting[j]+"</button></a>");
+		}
+		
 		$(".mdImg").attr("src",""+getImg+"");
 		$("#myModalLabel").text(""+getName+"");
 	}
+
+	$('#myModal').on('hidden.bs.modal', function (e) {
+  		$(".link").remove(".link");
+	 })
 </script>
 <script type="text/javascript">
 	(function($) {
