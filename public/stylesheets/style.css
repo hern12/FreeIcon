@@ -107,3 +107,8 @@ form {
 .modal-footer{
   text-align: left !important;
 }
+
+.link{
+  color: black;
+  margin: 2px 2px 2px 2px;
+}
