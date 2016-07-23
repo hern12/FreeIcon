@@ -7,7 +7,7 @@
 <body>
 	<div class="container-fluid bg">
 	    <div ng-app="FreeIcon">
-	    	<h1 class="HeadText">แจก Icon ฟรี!!</h1>
+	    	<h1 class="HeadText">ฟรีไอคอน</h1>
 	    	<div ng-controller = "IconsController" class=""> <!--ng-init ="listIcon()"--> 
 	    		<center>
 	    		<div class="form-group">
@@ -20,13 +20,11 @@
 				</div>
 				</center>
 	   			<ul class = "item-list row col-centered col-md-offset-0">
-					<li ng-repeat="data in datas" class="col-md-2 list">
+					<li ng-repeat="data in datas" class="col-md-2 list" alt="ไอคอน เฟส">
 						<a href="#" class="img-block" onclick="showImageInModal(this);" data-toggle="modal" data-target="#myModal">
 							<img ng-src="{{data.imgUrl}}" alt="img01"class="img-center" onerror="imgError(this);" >
 							<h4 class="hideDataName">{{data.name}}</h4>
-							<div class="" ng-repeat="link in data.linkDownloadPngFile track by $index">
-								<a style="display:none;">{{link}}</a>
-							</div>
+							<h4 class="dataLink" data-locations='{{data.linkDownloadPngFile}}'></h4>	
 						</a>
 					</li>
 				</ul>
@@ -40,9 +38,9 @@
 				        <center><h4 class="modal-title" id="myModalLabel"></h4></center>
 				      </div>
 				      <div class="modal-body showImg">
-				        <center><img class="mdImg"src=""></center>
+				        <center><img class="mdImg" src=""></center>
 				      </div>
-				      <div class="modal-footer">
+				      <div class="modal-footer PNG">
 				      	<button type="button" class="btn btn-default" data-dismiss="modal">PNG</button>
 				        
 				      </div>
@@ -64,9 +62,7 @@
 		$scope.title = "Hello Webboard";
 		$scope.Topics = [];
 		$scope.datas = [];
-		console.log($scope.datas)
 		$scope.adding = [];
-		console.log($scope.datas);
 		var numberIcon = 1;
 		var countShow = 1;
 		var checkText = "";
@@ -155,6 +151,7 @@
 			$(".loader").hide();
 		}
 		function getData(previewuUrl,iconName,linkDownloadPng){
+			console.log(linkDownloadPng);
 			$scope.datas.push({
 								imgUrl:previewuUrl,
 								name:iconName,
@@ -171,6 +168,13 @@
 	function showImageInModal(imageLink){
 		var getImg = $(imageLink).children().attr("ng-src");
 		var getName = $(imageLink).children().text();
+		var getLink = $(imageLink).find(".dataLink").data('locations');
+		var pushSortNumber = [];
+		for(var i=0;i<getLink.length;i++){
+			var getSize = getLink.sort();
+			console.log(getSize);
+			$(".PNG").append("<a src=><button class=btn btn-primary></button></a>");
+		}
 		$(".mdImg").attr("src",""+getImg+"");
 		$("#myModalLabel").text(""+getName+"");
 	}
