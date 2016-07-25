@@ -23,7 +23,7 @@
 					<li ng-repeat="data in datas" class="col-md-2 list" alt="ไอคอน เฟส">
 						<a href="#" class="img-block" onclick="showImageInModal(this);" data-toggle="modal" data-target="#myModal">
 							<img ng-src="{{data.imgUrl}}" alt="img01"class="img-center" onerror="imgError(this);" >
-							<h4 class="hideDataName">{{data.name}}</h4>
+<!-- 							<h4 class="hideDataName">{{data.name}}</h4> -->
 							<h4 class="dataLink" data-locations='{{data.linkDownloadPngFile}}'></h4>	
 						</a>
 					</li>
@@ -35,7 +35,7 @@
 				    <div class="modal-content">
 				      <div class="modal-header">
 				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				        <center><h4 class="modal-title" id="myModalLabel"></h4></center>
+<!-- 				        <center><h4 class="modal-title" id="myModalLabel"></h4></center> -->
 				      </div>
 				      <div class="modal-body showImg">
 				        <center><img class="mdImg" src=""></center>
@@ -45,7 +45,7 @@
 				        
 				      </div>
 				      <div class="modal-footer">
-				      	<button type="button" class="btn btn-success" data-dismiss="modal">SVF</button>
+				      	<button type="button" class="btn btn-success" data-dismiss="modal">ICON</button>
 				      
 				      </div>
 				    </div>
@@ -79,11 +79,8 @@
 			$(".loader").show();
 			var url = "https://api.iconfinder.com/v2/icons/search?query="+checkText+"&count=30&premium=0";
 			$http.get(url).success(function(data){
-			//console.log(searchText);
-			console.log(data);
 			placeData(data);
 			var totalCount = $scope.Topics.total_count;
-			console.log(data);
 			var caculateTotalrang = Math.floor(totalCount/30);
 			$(window).scroll(function(e) {
 					if(numberIcon <= caculateTotalrang){
@@ -117,12 +114,19 @@
 		function placeData(data){
 			$scope.Topics = data;
 			for(var i = 0;i<$scope.Topics.icons.length;i++){
+				if($scope.Topics.icons[i].containers[0] === undefined){
+				   console.log(i);
+				   break;
+				}else{
+					var downloadUrlIco = $scope.Topics.icons[i].containers[0].download_url;
+					console.log(downloadUrlIco);
+				}
 				for(var j = 0;j<$scope.Topics.icons[i].raster_sizes.length;j++){
 					var rasterSize = $scope.Topics.icons[i].raster_sizes[j].size_width;
 					var previewuUrl = $scope.Topics.icons[i].raster_sizes[j].formats[0].preview_url;
 					var iconName = $scope.Topics.icons[i].categories[0].name;
 					var downloadUrlName = "https://api.iconfinder.com";
-					downloadUrlName += $scope.Topics.icons[i].raster_sizes[j].formats[0].download_url
+					downloadUrlName += $scope.Topics.icons[i].raster_sizes[j].formats[0].download_url;
 					linkDownloadPng.push(downloadUrlName);
 					if(previewuUrl){
 						if(rasterSize === 512){
@@ -142,22 +146,22 @@
 						}
 					}
 				}
-				console.log("cut");
+				//console.log("cut");
 				linkDownloadPng = [];
 			}
 			//$scope.datas.Name.push($scope.Name);
 			
-			console.log($scope.datas);
+			//console.log($scope.datas);
 			$(".loader").hide();
 		}
 		function getData(previewuUrl,iconName,linkDownloadPng){
-			console.log(linkDownloadPng);
+			//console.log(linkDownloadPng);
 			$scope.datas.push({
 								imgUrl:previewuUrl,
 								name:iconName,
 								linkDownloadPngFile:linkDownloadPng
 							})
-			console.log($scope.datas);
+			//console.log($scope.datas);
 		}
 	})
 	function imgError(image){
@@ -177,11 +181,10 @@
 			changToInt.push(parseInt(getSize[8]));
 		}
 		var sorting = changToInt.sort(function(a, b){return a-b});
-		console.log(sorting);
 		for(var j = 0;j<sorting.length;j++){
 			getSize[8] = ""+sorting[j];
 			joining = getSize.join("/");
-			$(".PNG").append("<a class=link href="+joining+"><button class='btn btn-primary'>"+sorting[j]+"</button></a>");
+			$(".PNG").append("<a class=link href="+joining+"><button class='btn btn-primary'>"+sorting[j]+"px</button></a>");
 		}
 		
 		$(".mdImg").attr("src",""+getImg+"");
@@ -196,7 +199,7 @@
 	(function($) {
     var $window = $(window),
         $col = $('ul');
-        console.log($window);
+        //console.log($window);
     function resize() {
         if ($window.width() <= 1280) {
         	$col.removeClass('col-md-offset-0');
