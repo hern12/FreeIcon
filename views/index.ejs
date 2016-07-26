@@ -12,9 +12,9 @@
 	    		<center>
 	    		<div class="form-group">
 				    <form>
-                       <input type="text" class="search" ng-init ="listIcon()"ng-model="post.PostId" placeholder="Search..." required>
+                       <input type="text" class="search" id="search" ng-init ="listIcon()" ng-model="post.PostId" placeholder="Search..." required>
                        <span class="arrow">
-                       <input type="button" class="button" ng-click="listIcon(post.PostId);" value="Search">
+                       <input type="button" id="btnSearch" class="button" ng-click="listIcon(post.PostId);" value="Search">
                    	   </span>
 		            </form>
 				</div>
@@ -175,6 +175,14 @@
 							})
 			//console.log($scope.datas);
 		}
+		$('#search').keypress(function (e) {
+		 var key = e.which;
+		 if(key == 13)  // the enter key code
+		  {
+		    var getSearchtxt = $("#search").val();
+		    $scope.listIcon(getSearchtxt);
+		  }
+		});   
 	})
 	function imgError(image){
 	 	// image.parent().remove();
