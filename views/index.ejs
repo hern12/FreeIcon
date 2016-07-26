@@ -24,7 +24,8 @@
 						<a href="#" class="img-block" onclick="showImageInModal(this);" data-toggle="modal" data-target="#myModal">
 							<img ng-src="{{data.imgUrl}}" alt="img01"class="img-center" onerror="imgError(this);" >
 <!-- 							<h4 class="hideDataName">{{data.name}}</h4> -->
-							<h4 class="dataLink" data-locations='{{data.linkDownloadPngFile}}'></h4>	
+							<h4 class="dataLink" data-locations='{{data.linkDownloadPngFile}}'></h4>
+							<h4 class="hideDataName icoLink">{{data.icoLink}}</h4>	
 						</a>
 					</li>
 				</ul>
@@ -46,7 +47,9 @@
 				      </div>
 				      <div class="modal-footer">
 				      	<button type="button" class="btn btn-success" data-dismiss="modal">ICON</button>
-				      
+				      	<a href="" class="linktoIcon">
+				      		<button class='btn btn-primary'>Download</button>
+				      	</a>
 				      </div>
 				    </div>
 				  </div>
@@ -63,6 +66,7 @@
 		$scope.Topics = [];
 		$scope.datas = [];
 		$scope.adding = [];
+		$scope.icoLink =[];
 		var numberIcon = 1;
 		var countShow = 1;
 		var checkText = "";
@@ -114,13 +118,13 @@
 		function placeData(data){
 			$scope.Topics = data;
 			for(var i = 0;i<$scope.Topics.icons.length;i++){
+				var downloadIcoUrl= "https://api.iconfinder.com/v2";
 				if($scope.Topics.icons[i].containers[0] === undefined){
 				   console.log(i);
-				   break;
+				   // break;
 				}else{
 					var downloadUrlIco = $scope.Topics.icons[i].containers[0].download_url;
-					console.log(downloadUrlIco);
-				}
+						downloadIcoUrl += downloadUrlIco;
 				for(var j = 0;j<$scope.Topics.icons[i].raster_sizes.length;j++){
 					var rasterSize = $scope.Topics.icons[i].raster_sizes[j].size_width;
 					var previewuUrl = $scope.Topics.icons[i].raster_sizes[j].formats[0].preview_url;
@@ -128,39 +132,42 @@
 					var downloadUrlName = "https://api.iconfinder.com/v2";
 					downloadUrlName += $scope.Topics.icons[i].raster_sizes[j].formats[0].download_url;
 					linkDownloadPng.push(downloadUrlName);
-					console.log(linkDownloadPng);
+					//console.log(linkDownloadPng);
+					console.log(downloadIcoUrl);
 					if(previewuUrl){
 						if(rasterSize === 512){
-							getData(previewuUrl,iconName,linkDownloadPng);
+							getData(previewuUrl,iconName,linkDownloadPng,downloadIcoUrl);
 							//console.log(linkDownloadPng);
 							break;
 						}
 						if(rasterSize === 256){
-							getData(previewuUrl,iconName,linkDownloadPng);
+							getData(previewuUrl,iconName,linkDownloadPng,downloadIcoUrl);
 							//console.log(linkDownloadPng);
 							break;
 						}
 						if(rasterSize === 128){
-							getData(previewuUrl,iconName,linkDownloadPng);
+							getData(previewuUrl,iconName,linkDownloadPng,downloadIcoUrl);
 							//console.log(linkDownloadPng);
 							break;
 						}
 					}
 				}
+				}
 				//console.log("cut");
 				linkDownloadPng = [];
+				downloadIcoUrl = "";
 			}
 			//$scope.datas.Name.push($scope.Name);
 			
 			//console.log($scope.datas);
 			$(".loader").hide();
 		}
-		function getData(previewuUrl,iconName,linkDownloadPng){
-			//console.log(linkDownloadPng);
+		function getData(previewuUrl,iconName,linkDownloadPng,downloadUrlIco){
 			$scope.datas.push({
 								imgUrl:previewuUrl,
 								name:iconName,
-								linkDownloadPngFile:linkDownloadPng
+								linkDownloadPngFile:linkDownloadPng,
+								icoLink:downloadUrlIco
 							})
 			//console.log($scope.datas);
 		}
@@ -172,9 +179,10 @@
 	}
 	function showImageInModal(imageLink){
 		var getImg = $(imageLink).children().attr("ng-src");
-		var getName = $(imageLink).children().text();
+		//var getName = $(imageLink).children().text();
 		var getLink = $(imageLink).find(".dataLink").data('locations');
-		console.log(getLink);
+		var getIconLink = $(imageLink).find(".icoLink").text();
+		console.log(getIconLink);
 		var changToInt=[];
 		var getSize = [];
 		var joining;
@@ -193,7 +201,8 @@
 		}
 		
 		$(".mdImg").attr("src",""+getImg+"");
-		$("#myModalLabel").text(""+getName+"");
+		//$("#myModalLabel").text(""+getName+"");
+		$('.linktoIcon').attr('href',''+getIconLink);
 	}
 
 	$('#myModal').on('hidden.bs.modal', function (e) {
