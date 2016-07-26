@@ -125,9 +125,10 @@
 					var rasterSize = $scope.Topics.icons[i].raster_sizes[j].size_width;
 					var previewuUrl = $scope.Topics.icons[i].raster_sizes[j].formats[0].preview_url;
 					var iconName = $scope.Topics.icons[i].categories[0].name;
-					var downloadUrlName = "https://api.iconfinder.com";
+					var downloadUrlName = "https://api.iconfinder.com/v2";
 					downloadUrlName += $scope.Topics.icons[i].raster_sizes[j].formats[0].download_url;
 					linkDownloadPng.push(downloadUrlName);
+					console.log(linkDownloadPng);
 					if(previewuUrl){
 						if(rasterSize === 512){
 							getData(previewuUrl,iconName,linkDownloadPng);
@@ -173,17 +174,21 @@
 		var getImg = $(imageLink).children().attr("ng-src");
 		var getName = $(imageLink).children().text();
 		var getLink = $(imageLink).find(".dataLink").data('locations');
+		console.log(getLink);
 		var changToInt=[];
 		var getSize = [];
 		var joining;
 		for(var i=0;i<getLink.length;i++){
 			getSize = getLink[i].split("/");
 			changToInt.push(parseInt(getSize[8]));
+			console.log(getSize[8]);
 		}
 		var sorting = changToInt.sort(function(a, b){return a-b});
+
 		for(var j = 0;j<sorting.length;j++){
 			getSize[8] = ""+sorting[j];
 			joining = getSize.join("/");
+
 			$(".PNG").append("<a class=link href="+joining+"><button class='btn btn-primary'>"+sorting[j]+"px</button></a>");
 		}
 		
