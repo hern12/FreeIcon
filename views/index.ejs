@@ -5,31 +5,34 @@
 <!--     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> -->
 </head>
 <body>
-	<div class="container-fluid bg">
+	<div class="bg">
 	    <div ng-app="FreeIcon">
+
 	    	<!-- <h1 class="HeadText">ฟรีไอคอน</h1> -->
-	    	<center><img src="img/logo.png" width="380px" height="150px"></center>
 	    	<div ng-controller = "IconsController" class=""> <!--ng-init ="listIcon()"--> 
 	    		<center>
-	    		<div class="form-group">
-				    <form>
-                       <input type="text" class="search" id="search" ng-init ="listIcon()" ng-model="post.PostId" placeholder="Search..." required>
-                       <span class="arrow">
-                       <input type="button" id="btnSearch" class="button" ng-click="listIcon(post.PostId);" value="Search">
-                   	   </span>
-		            </form>
-				</div>
+	    			<div class="header">
+		    			<img src="img/logo.png">
+			    		<div class="form-group">
+						    <form>
+		                       <input type="text" class="search" id="search" ng-init ="listIcon()" ng-model="post.PostId" placeholder="Search..." required>
+		                       <span class="arrow">
+		                       <input type="button" id="btnSearch" class="button" ng-click="listIcon(post.PostId);" value="Search">
+		                   	   </span>
+				            </form>
+						</div>
+					</div>
 				</center>
-	   			<ul class = "item-list row col-centered col-md-offset-0">
-					<li ng-repeat="data in datas" class="col-md-2 list" alt="ไอคอน เฟส">
-						<a href="#" class="img-block" onclick="showImageInModal(this);" data-toggle="modal" data-target="#myModal">
-							<img ng-src="{{data.imgUrl}}" alt="img01"class="img-center" onerror="imgError(this);" >
-<!-- 							<h4 class="hideDataName">{{data.name}}</h4> -->
-							<h4 class="dataLink" data-locations='{{data.linkDownloadPngFile}}'></h4>
-							<h4 class="hideDataName icoLink">{{data.icoLink}}</h4>	
-						</a>
-					</li>
-				</ul>
+	   				<ul class = "item-list row col-centered col-md-offset-0">
+						<li ng-repeat="data in datas" class="col-md-2 list" alt="ไอคอน เฟส">
+							<a href="#" class="img-block" onclick="showImageInModal(this);" data-toggle="modal" data-target="#myModal">
+								<img ng-src="{{data.imgUrl}}" alt="img01"class="img-center" onerror="imgError(this);" >
+	<!-- 							<h4 class="hideDataName">{{data.name}}</h4> -->
+								<h4 class="dataLink" data-locations='{{data.linkDownloadPngFile}}'></h4>
+								<h4 class="hideDataName icoLink">{{data.icoLink}}</h4>	
+							</a>
+						</li>
+					</ul>
 				<center><div class="loader"></div></center>
 				<!-- Modal -->
 				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -84,21 +87,21 @@
 				checkText ="icon";
 			}
 			$(".loader").show();
-			var url = "https://api.iconfinder.com/v2/icons/search?query="+checkText+"&count=30&premium=0";
+			var url = "https://api.iconfinder.com/v2/icons/search?query="+checkText+"&count=100&premium=0";
 			$http.get(url).success(function(data){
 			placeData(data);
 			var totalCount = $scope.Topics.total_count;
 			//console.log(totalCount);
-			caculateTotalrang = Math.floor(totalCount/30);
+			caculateTotalrang = Math.floor(totalCount/100);
 			$(window).scroll(function(e) {
 					if(numberIcon <= caculateTotalrang){
 						//console.log(numberIcon);
 						//console.log(caculateTotalrang);
 					    if($(window).scrollTop() >= $(document).height() - $(window).height()) {
 					    	  $(".loader").show();
-					          countShow = countShow +30;
+					          countShow = countShow +100;
 					          //console.log(countShow);			  
-					          var url = "https://api.iconfinder.com/v2/icons/search?query="+checkText+"&count=30&premium=0&offset=";
+					          var url = "https://api.iconfinder.com/v2/icons/search?query="+checkText+"&count=100&premium=0&offset=";
 					          url += ""+countShow;
 					          //console.log(url);
 					          $http.get(url).success(function(data){
@@ -229,8 +232,9 @@
         $col = $('ul');
         //console.log($window);
     function resize() {
-        if ($window.width() <= 1366) {
+        if ($window.width() <= 1306) {
         	$col.removeClass('col-md-offset-0');
+        	// $col.css('margin-left','80px');
             return $col.addClass('col-md-offset-1');
         }else{
         	$col.removeClass('col-md-offset-1');

@@ -1,10 +1,10 @@
 body {
-  padding: 50px;
+  /*padding: 50px;*/
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: #eaeaea;
 }
 .modal-open{
-  padding-right: 50px !important;
+  padding-right: 0px !important;
   overflow: scroll;
 }
 .bg{
@@ -12,16 +12,27 @@ body {
 }
 .item-list{
   width: 100%;
+  padding-left: 30px;
+  margin-left: 15px;
 }
 a {
   color: #00B7FF;
 }
+.header{
+  width: 100%;
+  background-color: #F5F5F5;
+  padding: 30px 0 30px 0;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+}
 .list{
-   border-radius: 25px;
+   border-radius: 5px;
   list-style-type: none;
   margin: 10px 20px 10px 20px;
   background-color: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+  width: 100px;
+  height: 100px;
   -o-transition:.5s;
   -ms-transition:.5s;
   -moz-transition:.5s;
@@ -38,15 +49,15 @@ a {
   text-align: center;
 }
 .img-block{
-  width: 128px;
-  height: 198px;
+  width: 100px;
+  height: 100px;
 }
 .img-center{
   display: block;
-  margin:0 auto;
-  padding: 35px 0px 35px 0px;
-  width: 128px;
-  height: 198px;
+  margin:27px auto;
+  /*padding: 35px 0px 35px 0px;*/
+  width: 48px;
+  height: 48px;
 }
 .button-center{
 width: 100%;
