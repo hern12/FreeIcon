@@ -65,8 +65,10 @@
 </body>
 <script type="text/javascript" src="./javascripts/angular.js"></script>
 <script>
+	var getTranslatdata;
 	var app = angular.module("FreeIcon",[]);
 	app.controller("IconsController",function($scope,$http){
+		console.log(getTranslatdata);
 		$scope.title = "Hello Webboard";
 		$scope.Topics = [];
 		$scope.datas = [];
@@ -125,7 +127,6 @@
 				location.reload();
 			})
 		}
-
 		function placeData(data){
 			$scope.Topics = data;
 			for(var i = 0;i<$scope.Topics.icons.length;i++){
@@ -140,6 +141,7 @@
 					var rasterSize = $scope.Topics.icons[i].raster_sizes[j].size_width;
 					var previewuUrl = $scope.Topics.icons[i].raster_sizes[j].formats[0].preview_url;
 					//var iconName = $scope.Topics.icons[i].categories[0].name;
+					console.log($scope.Topics.icons[i]);
 					var downloadUrlName = "https://api.iconfinder.com/v2";
 					downloadUrlName += $scope.Topics.icons[i].raster_sizes[j].formats[0].download_url;
 					linkDownloadPng.push(downloadUrlName);
@@ -189,7 +191,7 @@
 		    var getSearchtxt = $("#search").val();
 		    $scope.listIcon(getSearchtxt);
 		  }
-		});   
+		}); 
 	})
 	function imgError(image){
 	 	// image.parent().remove();
@@ -227,6 +229,7 @@
 	$('#myModal').on('hidden.bs.modal', function (e) {
   		$(".link").remove(".link");
 	 })
+	
 </script>
 <script type="text/javascript">
 	(function($) {
