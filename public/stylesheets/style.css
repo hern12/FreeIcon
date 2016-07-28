@@ -2,6 +2,7 @@ body {
   /*padding: 50px;*/
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: #eaeaea;
+  padding: 0;
 }
 .modal-open{
   padding-right: 0px !important;
@@ -12,8 +13,8 @@ body {
 }
 .item-list{
   width: 100%;
-  padding-left: 30px;
-  margin-left: 15px;
+  /*padding-left: 30px;
+  margin-left: 15px;*/
   display: none;
 }
 a {
