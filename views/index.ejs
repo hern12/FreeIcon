@@ -26,7 +26,7 @@
 				</center>
 	   				<ul class = "item-list row col-centered col-md-offset-0">
 						<li ng-repeat="data in datas" class="col-md-2 list" alt="ไอคอน เฟส">
-							<a href="#" class="img-block" onclick="showImageInModal(this);" data-toggle="modal" data-target="#myModal">
+							<a href="#" class="img-block" onclick="showImageInModal(this);" data-toggle="modal" data-target="#myModal" >
 								<img ng-src="{{data.imgUrl}}" alt="img01"class="img-center" onerror="imgError(this);" >
 	<!-- 							<h4 class="hideDataName">{{data.name}}</h4> -->
 								<h4 class="dataLink" data-locations='{{data.linkDownloadPngFile}}'></h4>
@@ -139,7 +139,7 @@
 				for(var j = 0;j<$scope.Topics.icons[i].raster_sizes.length;j++){
 					var rasterSize = $scope.Topics.icons[i].raster_sizes[j].size_width;
 					var previewuUrl = $scope.Topics.icons[i].raster_sizes[j].formats[0].preview_url;
-					var iconName = $scope.Topics.icons[i].categories[0].name;
+					//var iconName = $scope.Topics.icons[i].categories[0].name;
 					var downloadUrlName = "https://api.iconfinder.com/v2";
 					downloadUrlName += $scope.Topics.icons[i].raster_sizes[j].formats[0].download_url;
 					linkDownloadPng.push(downloadUrlName);
@@ -147,23 +147,24 @@
 					//console.log(downloadIcoUrl);
 					if(previewuUrl){
 						if(rasterSize === 512){
-							getData(previewuUrl,iconName,linkDownloadPng,downloadIcoUrl);
+							getData(previewuUrl,"",linkDownloadPng,downloadIcoUrl);
 							//console.log(linkDownloadPng);
 							break;
 						}
 						if(rasterSize === 256){
-							getData(previewuUrl,iconName,linkDownloadPng,downloadIcoUrl);
+							getData(previewuUrl,"",linkDownloadPng,downloadIcoUrl);
 							//console.log(linkDownloadPng);
 							break;
 						}
 						if(rasterSize === 128){
-							getData(previewuUrl,iconName,linkDownloadPng,downloadIcoUrl);
+							getData(previewuUrl,"",linkDownloadPng,downloadIcoUrl);
 							//console.log(linkDownloadPng);
 							break;
 						}
 					}
 				}
 				}
+				$('.item-list').show();
 				//console.log("cut");
 				linkDownloadPng = [];
 				downloadIcoUrl = "";

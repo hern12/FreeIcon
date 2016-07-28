@@ -14,6 +14,7 @@ body {
   width: 100%;
   padding-left: 30px;
   margin-left: 15px;
+  display: none;
 }
 a {
   color: #00B7FF;
@@ -26,6 +27,7 @@ a {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
 }
 .list{
+  padding: 0;
    border-radius: 5px;
   list-style-type: none;
   margin: 10px 20px 10px 20px;
@@ -48,9 +50,11 @@ a {
 .HeadText{
   text-align: center;
 }
-.img-block{
-  width: 100px;
-  height: 100px;
+.list .img-block{
+  display: inline-block;
+  clear:both;
+  width: 100% !important;
+  height: 100% !important;
 }
 .img-center{
   display: block;
