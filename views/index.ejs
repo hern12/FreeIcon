@@ -3,6 +3,13 @@
 <head>
     <% include ./head %>
     <title>ดาวน์โหลดไอคอนหน้าจอ ไอคอนเฟส ฟรี!!</title>
+    <meta name="description" content="เว็บแจกไอคอน มีไอคอนให้เลือกมากมาย ไม่ว่าจะเป็น ไอคอนหน้าจอ ไอคอนเฟส ไอคอนแฟ้มเอกสาร ไอคอนน่ารัก เป็นต้น และที่สำคัญ สามารถดาวน์โหลดได้ฟรีทุกอัน">
+    <meta name="keywords" content="ไอคอน,ไอคอนเฟส,ไอคอนหน้าจอ,ไอคอน facebook,ไอคอนน่ารัก,ไอคอนน่ารักๆ,ไอคอนแอพ ">
+    <meta property="og:title" content="ไอคอน">
+    <meta property="og:site_name" content="ไอคอน">
+    <meta property="og:url" content="http://freeicon.herokuapp.com/">
+    <meta property="og:type" content="website">
+    
 <!--     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> -->
 </head>
 <body>
@@ -88,16 +95,17 @@
 				checkText ="social";
 				queryData(checkText);
 			}
-			$http.post('/view1',$scope.post).
-	        success(function(data) {
-	            console.log("posted successfully");
-	            checkText = data;
-	            queryData(checkText);
+			if($scope.post != undefined || $scope.post != null){
+				$http.post('/view1',$scope.post).
+		        success(function(data) {
+		            console.log("posted successfully");
+		            checkText = data;
+		            queryData(checkText);
 
-	        }).error(function(data) {
-	            console.error("error in posting");
-	        })
-
+		        }).error(function(data) {
+		            console.error("error in posting");
+		        })
+	        }
 	        function queryData(checkText){
 	        	showUi();
 	        	var url = "https://api.iconfinder.com/v2/icons/search?query="+checkText+"&count=100&premium=0";
