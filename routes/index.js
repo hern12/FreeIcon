@@ -6,7 +6,9 @@ router.get('/', function(req, res, next) {
   res.render('index');
 });
 // router.get('/getDic', function(req, res){
-
+router.get('/search', function(req, res, next) {
+  res.render('search');
+});
 // });
 router.post('/view1', function(req, res) {
 	var getSearchText = req.body.PostId;

@@ -13,6 +13,41 @@
 <!--     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> -->
 </head>
 <body>
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="#">
+	        <img alt="Brand" src="img/logo.png" width="70" height="30">
+	      </a>
+	    </div>
+	    <ul class="nav navbar-nav">
+	    	<li class="active">
+		    	<a href="#">
+				    <span class="glyphicon icon-home"></span>
+				    <span class="glyphicon menuLink"> HOME</span>
+		    	</a>
+	    	</li>
+	    	<li class="">
+		    	<a href="#">
+			    	<span class="glyphicon icon-facebook-squared"></span>
+			    	<span class="glyphicon menuLink"> ไอคอนเฟส</span>
+			    </a>
+		    </li>
+		    <li class="">
+		    	<a href="#">
+			    	<span class="glyphicon icon-desktop"></span>
+			    	<span class="glyphicon menuLink"> ไอคอนหน้าจอ</span>
+			    </a>
+		    </li>
+		    <li class="">
+		    	<a href="./search">
+			    	<span class="glyphicon icon-search"></span>
+			    	<span class="glyphicon menuLink">ค้นหาไอคอน</span>
+			    </a>
+		    </li>    
+	    </ul>
+	  </div>
+	</nav>
 	<div class="bg">
 	    <div ng-app="FreeIcon">
 
@@ -20,7 +55,7 @@
 	    	<div ng-controller = "IconsController" class=""> <!--ng-init ="listIcon()"--> 
 	    		<center>
 	    			<div class="header">
-		    			<img src="img/logo.png" width="250" height="106">
+		    			<!-- <img src="img/logo.png" width="250" height="106"> -->
 			    		<div class="form-group">
 						    <form>
 		                       <input type="text" class="search" id="search" ng-init ="listIcon()" ng-model="post.PostId" placeholder="Search..." required>

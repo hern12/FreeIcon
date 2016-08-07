@@ -1,21 +1,50 @@
 body {
   /*padding: 50px;*/
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: #eaeaea;
+  /*background-color: #eaeaea;*/
   padding: 0;
+}
+.container { width: @container-desktop !important; }
+.nav{
+  font-family: 'Oswald', sans-serif !important; 
+}
+.menuLink{
+  font-family: 'Oswald', sans-serif !important;
+  padding-left: -5px 
 }
 .modal-open{
   padding-right: 0px !important;
   overflow: scroll;
 }
+.navbar{
+  margin-bottom: 0;
+}
+.navbar-brand{
+  padding-top: 10px;
+}
 .bg{
-  background-color: #eaeaea;
+  /*background-color: #eaeaea;*/
 }
 .item-list{
-  width: 100%;
-  /*padding-left: 30px;
-  margin-left: 15px;*/
+  width: 702px;
+  height: 100%;
+  padding: 0;
+  background-color: #eaeaea;
   display: none;
+  overflow: hidden;
+  margin: 0 auto;
+  box-shadow: 0 4px 2px 1px rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+}
+.ads{
+    position:absolute;
+    right:0; top:243px; bottom: 0;left:999px;
+    width: 250px;
+    height: 250px;
+    margin-right: 14px;
+    background-color: #eaeaea;
+    box-shadow: 0 4px 2px 1px rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+
 }
 a {
   color: #00B7FF;
@@ -26,7 +55,7 @@ a {
   padding: 30px 0 0px 0;
   margin-bottom: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
-  height: 250px;
+  height: 180px;
 }
 .list{
   padding: 0;
