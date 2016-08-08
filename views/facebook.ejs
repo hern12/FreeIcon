@@ -22,13 +22,13 @@
 	    </div>
 	    <ul class="nav navbar-nav">
 	    	<li class="active">
-		    	<a href="./">
+		    	<a href="#">
 				    <span class="glyphicon icon-home"></span>
 				    <span class="glyphicon menuLink"> HOME</span>
 		    	</a>
 	    	</li>
 	    	<li class="">
-		    	<a href="./facebook">
+		    	<a href="#">
 			    	<span class="glyphicon icon-facebook-squared"></span>
 			    	<span class="glyphicon menuLink"> ไอคอนเฟส</span>
 			    </a>
@@ -50,22 +50,9 @@
 	</nav>
 	<div class="bg">
 	    <div ng-app="FreeIcon">
-
 	    	<!-- <h1 class="HeadText">ฟรีไอคอน</h1> -->
-	    	<div ng-controller = "IconsController" class=""> <!--ng-init ="listIcon()"--> 
-	    		<center>
-	    			<div class="header">
-		    			<!-- <img src="img/logo.png" width="250" height="106"> -->
-			    		<div class="form-group">
-						    <form>
-		                       <input type="text" class="search" id="search" ng-init ="listIcon()" ng-model="post.PostId" placeholder="Search..." required>
-		                       <span class="arrow">
-		                       <input type="button" id="btnSearch" class="button" ng-click="listIcon(post.PostId);" value="Search">
-		                   	   </span>
-				            </form>
-						</div>
-					</div>
-				</center>
+	    	<div class="spacing"></div>
+	    	<div ng-init ="listIcon()" ng-controller = "IconsController" class=""> <!--ng-init ="listIcon()"--> 
 	   				<ul class = "row col-centered col-xs-offset-0 item-list"> <!--  -->
 						<li ng-repeat="data in datas" class="col-xs-1 list" alt="ไอคอน เฟส">
 							<a href="#" class="img-block" onclick="showImageInModal(this);" data-toggle="modal" data-target="#myModal" >
@@ -76,7 +63,7 @@
 							</a>
 						</li>
 					</ul>
-					<div class="ads">
+					<div class="adsPageFace">
 						asdasd
 					</div>
 				<center>
@@ -135,7 +122,7 @@
 			checkText = searchText;
 			numberIcon =1;
 			if(checkText == null ||checkText == undefined){
-				checkText = "random";
+				checkText = "facebook";
 				queryData(checkText);
 			}
 			if($scope.post != undefined || $scope.post != null){
