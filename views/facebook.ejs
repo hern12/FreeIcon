@@ -138,7 +138,7 @@
 	        }
 	        function queryData(checkText){
 	        	showUi();
-	        	var url = "https://api.iconfinder.com/v2/icons/search?query="+checkText+"&count=100&premium=0";
+	        	var url = "https://api.iconfinder.com/v2/icons/search?query="+checkText+"&count=100&license=commercial-nonattribution&premium=0&offset=";
 	        	$http.get(url).success(function(data){
 	        		$scope.datas = [];
 	        		console.log(checkText);
@@ -176,7 +176,7 @@
 
 	        function getDataAgain(countShow){
 
-	        	var url = "https://api.iconfinder.com/v2/icons/search?query="+checkText+"&count=100&premium=0&offset=";
+	        	var url = "https://api.iconfinder.com/v2/icons/search?query="+checkText+"&count=100&license=commercial-nonattribution&premium=0&offset=";
 	        	url += ""+countShow;
 	        	$http.get(url).success(function(data){
 
