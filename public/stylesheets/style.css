@@ -174,3 +174,21 @@ form {
   color: black;
   margin: 2px 2px 2px 2px;
 }
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -1px;
+}
+.right-caret {
+    border-bottom: 4px solid transparent;
+    border-top: 4px solid transparent;
+    border-left: 4px solid #000000;
+    display: inline-block;
+    height: 0;
+    margin-left: 5px;
+    width: 0;
+}
