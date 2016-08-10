@@ -46,6 +46,15 @@ body {
     box-shadow: 0 4px 2px 1px rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
 
 }
+.IndexAds{
+   position:absolute;
+    right:0; top:72px; bottom: 0;left:999px;
+    width: 250px;
+    height: 250px;
+    margin-right: 14px;
+    background-color: #eaeaea;
+    box-shadow: 0 4px 2px 1px rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+}
 .adsPageFace{
   position:absolute;
   right:0; top:57px; bottom: 0;left:999px;
@@ -191,4 +200,27 @@ form {
     height: 0;
     margin-left: 5px;
     width: 0;
+}
+.TextBox{
+  display:  table;
+  margin: 20px auto 0;
+  background-color: #eaeaea;
+  box-shadow: 0 4px 2px 1px rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  width: 700px;
+  height: 250px;
+}
+.TextBox h1 , .mainAdvertis h1{
+   text-align: center;
+   display: table-cell;
+   vertical-align: middle;
+}
+.mainAdvertis{
+  display:  table;
+  margin: 10px auto 0;
+  background-color: #eaeaea;
+  box-shadow: 0 4px 2px 1px rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  width: 700px;
+  height: 170px;
 }
