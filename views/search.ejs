@@ -16,33 +16,23 @@
 	<nav class="navbar navbar-default">
 	  <div class="container-fluid">
 	    <div class="navbar-header">
-	      <a class="navbar-brand" href="#">
+	      <a class="navbar-brand" href="./">
 	        <img alt="Brand" src="img/logo.png" width="70" height="30">
 	      </a>
 	    </div>
 	    <ul class="nav navbar-nav">
-	    	<li class="active">
+	    	<li class="menuclick">
 		    	<a href="./">
 				    <span class="glyphicon icon-home"></span>
 				    <span class="glyphicon menuLink"> HOME</span>
 		    	</a>
 	    	</li>
-	    	<li class="">
-		    	<a href="./facebook">
-			    	<span class="glyphicon icon-facebook-squared"></span>
-			    	<span class="glyphicon menuLink"> ไอคอนเฟส</span>
-			    </a>
-		    </li>
-		    <li class="">
-		    	<a href="#">
-			    	<span class="glyphicon icon-desktop"></span>
-			    	<span class="glyphicon menuLink"> ไอคอนหน้าจอ</span>
-			    </a>
-		    </li>
-		    <li class="">
+			<% include ./socialMenu %>
+		    <% include ./WebsiteIcons %>
+		    <li class="active menuclick">
 		    	<a href="./search">
 			    	<span class="glyphicon icon-search"></span>
-			    	<span class="glyphicon menuLink">ค้นหาไอคอน</span>
+			    	<span class="glyphicon menuLink"> Search Icons</span>
 			    </a>
 		    </li>    
 	    </ul>
@@ -316,25 +306,37 @@
 	
 </script>
 <script type="text/javascript">
-// 	(function($) {
-//     var $window = $(window),
-//         $col = $('.item-list');
-//         //console.log($window);
-//     function resize() {
-//         if ($window.width() <= 1306) {
-//         	$col.removeClass('col-md-offset-0');
-//         	$col.css('margin-left','0px');
-//         	$col.css('padding-left','0px');
-//             return $col.addClass('col-md-offset-0');
-//         }else{
-//         	$col.removeClass('col-md-offset-1');
-//             return $col.addClass('col-md-offset-0');
-//         }
-//     }
-//     $window
-//         .resize(resize)
-//         .trigger('resize');
-// })(jQuery);
-
+	(function($) {
+    var $window = $(window),
+        $col = $('.item-list');
+        $ads = $('.ads');
+        //console.log($window);
+    function resize() {
+        if ($window.width() == 1920) {
+        	$col.removeClass('col-md-offset-0');
+        	$col.css('margin','0 auto');
+        	$col.css('padding-left','0px');
+        	$col.css('width','1120px');
+        	$ads.css('width','350px');
+        	$ads.css('left','1540px');
+            return $col.addClass('col-md-offset-1');
+        }else{
+        	$col.removeClass('col-md-offset-1');
+            return $col.addClass('col-md-offset-0');
+        }
+    }
+    $window
+        .resize(resize)
+        .trigger('resize');
+})(jQuery);
+//change active menu when click
+$(function() {
+   $("li.menuclick").click(function() {
+      // remove classes from all
+      $("li.menuclick").removeClass("active");
+      // add class to the one we clicked
+      $(this).addClass("active");
+   });
+});
 </script>
 </html>
