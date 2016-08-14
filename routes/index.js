@@ -14,13 +14,14 @@ router.get('/facebook', function(req, res, next) {
 });
 // });
 router.post('/view1', function(req, res) {
+	res.setHeader('Content-Type', 'text/plain');
 	var getSearchText = req.body.PostId;
 	checkChar(getSearchText);
 	// res.send({kuy:getThDic[0].search,fuck:getSearchText});
 	
 	for(var i = 0;i<getThDic.length;i++){
 		if(getSearchText == getThDic[i].search){
-			res.send(getThDic[i].result);
+			res.end(getThDic[i].result);
 		}
     }
 
@@ -34,11 +35,11 @@ router.post('/view1', function(req, res) {
 		if (!valOK) {
 				for(var i = 0;i<getThDic.length;i++){
 					if(getSearchText == getThDic[i].search){
-					   res.send(getThDic[i].result);
+					   res.end(getThDic[i].result);
 					}
 				}	
 			}else{
-				res.send(getSearchText);
+				res.end(getSearchText);
 			}
 		} 
 });
