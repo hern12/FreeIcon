@@ -77,6 +77,9 @@ body {
     box-shadow: 0 4px 2px 1px rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
 
 }
+.allAdvertist{
+  margin-top: 0 !important;
+}
 .IndexAds{
     /*position:absolute;*/
     /*right:0; top:72px; bottom: 0;left:999px;*/
@@ -138,6 +141,7 @@ a {
   width: 100%;
   background-color: #F5F5F5;
   padding: 0px 0 0px 0;
+  margin-top: 50px;
   margin-bottom: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
   height: 70px;
@@ -354,9 +358,6 @@ hr{
 .stloader{
   margin-top: 20px;
 }
-
-
-
 
 
 
