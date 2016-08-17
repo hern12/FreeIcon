@@ -1,0 +1,50 @@
+	<div class="bg">
+	    <div ng-app="FreeIcon">
+	    	<!-- <h1 class="HeadText">ฟรีไอคอน</h1> -->
+	    	<div class="spacing"></div>
+	    	<div ng-init ="listIcon()" ng-controller = "IconsController" class=""> <!--ng-init ="listIcon()"--> 
+	    	<div  class="container showIcon">
+	   			<ul class = "row item-list"> <!--  -->
+					<li ng-repeat="data in datas" class="col-xs-1 list" alt="ไอคอน เฟส">
+						<a href="#" class="img-block" onclick="showImageInModal(this);" data-toggle="modal" data-target="#myModal" >
+							<img ng-src="{{data.imgUrl}}" alt="img01" class="img-center" onerror="imgError(this);" >
+		<!-- 						<h4 class="hideDataName">{{data.name}}</h4> -->
+							<h4 class="dataLink" data-locations='{{data.linkDownloadPngFile}}'></h4>
+							<h4 class="hideDataName icoLink">{{data.icoLink}}</h4>	
+						</a>
+					</li>
+				</ul>
+			</div>
+				<center>
+					<div class="stloader">
+						<div class="loader"></div>
+						<h1>กำลังโหลดข้อมูล...</h1>
+					</div>			
+				</center>
+				<!-- Modal -->
+				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+<!-- 				        <center><h4 class="modal-title" id="myModalLabel"></h4></center> -->
+				      </div>
+				      <div class="modal-body showImg">
+				        <center><img class="mdImg" src=""></center>
+				      </div>
+				      <div class="modal-footer PNG">
+				      	<button type="button" class="btn btn-success" data-dismiss="modal">ไฟล์นามสกุล PNG</button>
+				        
+				      </div>
+				      <div class="modal-footer">
+				      	<button type="button" class="btn btn-success" data-dismiss="modal">ไฟล์นามสกุล ICON</button>
+				      	<a href="" class="linktoIcon">
+				      		<button class='btn btn-primary'>Download</button>
+				      	</a>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+	    	</div>
+	    </div>
+	 </div><!-- container -->

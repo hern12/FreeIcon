@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var getThDic = require('../public/thaiToEng/thai2eng.json');
+var getTxtData = require('../public/TxtData/data.json');
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index');
@@ -10,7 +11,11 @@ router.get('/search', function(req, res, next) {
   res.render('search');
 });
 router.get('/facebook', function(req, res, next) {
-  res.render('facebook');
+  res.render('facebook',{title:getTxtData["title"],des:getTxtData["description"],
+						first:getTxtData["first"],second:getTxtData["second"]});
+});
+router.get('/twitter', function(req, res, next) {
+  res.render('twitter');
 });
 // });
 router.post('/view1', function(req, res) {

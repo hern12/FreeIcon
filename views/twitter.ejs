@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <% include ./head %>
-    <title>ดาวน์โหลดไอคอนหน้าจอ ไอคอนเฟส ฟรี!!</title>
+    <title>ไอคอนทวิตเตอร์</title>
     <meta name="description" content="เว็บแจกไอคอน มีไอคอนให้เลือกมากมาย ไม่ว่าจะเป็น ไอคอนหน้าจอ ไอคอนเฟส ไอคอนแฟ้มเอกสาร ไอคอนน่ารัก เป็นต้น และที่สำคัญ สามารถดาวน์โหลดได้ฟรีทุกอัน">
     <meta name="keywords" content="ไอคอน,ไอคอนเฟส,ไอคอนหน้าจอ,ไอคอน facebook,ไอคอนน่ารัก,ไอคอนน่ารักๆ,ไอคอนแอพ ">
     <meta property="og:title" content="ไอคอน">
@@ -14,70 +14,12 @@
 </head>
 <body>
 	<% include ./menuTemplate %>
-	<div class="bg">
-	    <div ng-app="FreeIcon">
-	    	<!-- <h1 class="HeadText">ฟรีไอคอน</h1> -->
-	    	<div ng-controller = "IconsController" class=""> <!--ng-init ="listIcon()"--> 
-	    		<center>
-	    			<div class="header">
-		    			<!-- <img src="img/logo.png" width="250" height="106"> -->
-			    		<div class="form-group">
-						    <form>
-		                       <input type="text" class="search" id="search" ng-init ="listIcon()" ng-model="post.PostId" placeholder="Search..." required>
-		                       <span class="arrow">
-		                       <input type="button" id="btnSearch" class="button" ng-click="listIcon(post.PostId);" value="Search">
-		                   	   </span>
-				            </form>
-						</div>
-					</div>
-				</center>
-				<% include ./banner %>
-				<div class="container showIcon">
-	   				<ul class = "row item-list"> <!--  -->
-						<li ng-repeat="data in datas" class="col-xs-1 list" alt="ไอคอน เฟส">
-							<a href="#" class="img-block" onclick="showImageInModal(this);" data-toggle="modal" data-target="#myModal" >
-								<img ng-src="{{data.imgUrl}}" alt="img01" class="img-center" onerror="imgError(this);" >
-		<!-- 						<h4 class="hideDataName">{{data.name}}</h4> -->
-								<h4 class="dataLink" data-locations='{{data.linkDownloadPngFile}}'></h4>
-								<h4 class="hideDataName icoLink">{{data.icoLink}}</h4>	
-							</a>
-						</li>
-					</ul>
-				</div>
-				<center>
-					<div class="stloader">
-						<div class="loader"></div>
-						<h1>กำลังโหลดข้อมูล...</h1>
-					</div>			
-				</center>
-				<!-- Modal -->
-				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-				  <div class="modal-dialog" role="document">
-				    <div class="modal-content">
-				      <div class="modal-header">
-				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-<!-- 				        <center><h4 class="modal-title" id="myModalLabel"></h4></center> -->
-				      </div>
-				      <div class="modal-body showImg">
-				        <center><img class="mdImg" src=""></center>
-				      </div>
-				      <div class="modal-footer PNG">
-				      	<button type="button" class="btn btn-success" data-dismiss="modal">ไฟล์นามสกุล PNG</button>
-				        
-				      </div>
-				      <div class="modal-footer">
-				      	<button type="button" class="btn btn-success" data-dismiss="modal">ไฟล์นามสกุล ICON</button>
-				      	<a href="" class="linktoIcon">
-				      		<button class='btn btn-primary'>Download</button>
-				      	</a>
-				      </div>
-				    </div>
-				  </div>
-				</div>
-	    	</div>
-	    </div>
-	 </div><!-- container -->
-	 <% include ./footer %>	
+	<div class="backmenu">
+		
+	</div>
+	<% include ./banner %>
+	<% include ./loadData %>
+	<% include ./footer %>	
 </body>
 <script type="text/javascript" src="./javascripts/angular.js"></script>
 <script>
@@ -101,19 +43,20 @@
 			checkText = searchText;
 			numberIcon =1;
 			if(checkText == null ||checkText == undefined){
-				checkText = "google";
+				checkText = "twitter";
 				queryData(checkText);
 			}
-			if($scope.post != undefined || $scope.post != null){
-				$http.post('/view1',$scope.post).
-		        success(function(data) {
-		            console.log("posted successfully");
-		            checkText = data;
-		            queryData(checkText);
-		        }).error(function(data) {
-		            console.error("error in posting");
-		        })
-	        }
+			// if($scope.post != undefined || $scope.post != null){
+			// 	$http.post('/view1',$scope.post).
+		 //        success(function(data) {
+		 //            console.log("posted successfully");
+		 //            checkText = data;
+		 //            queryData(checkText);
+
+		 //        }).error(function(data) {
+		 //            console.error("error in posting");
+		 //        })
+	  //       }
 	        function queryData(checkText){
 	        	showUi();
 	        	var url = "https://api.iconfinder.com/v2/icons/search?query="+checkText+"&count=100&premium=0&offset=";
@@ -129,34 +72,43 @@
 	        	}).error(function(data){
 					location.reload();
 				});
+
 	        }
+
 	        function scrollingLoadData(){
 	        	$(window).scroll(function(e) {
 	        		if(numberIcon < calculateTotalrang){
-	        			if($(window).scrollTop() < $(document).height() - $(window).height()) {
+	        			//if($(window).scrollTop() == $(document).height() - $(window).height()) {
 	        				showUi();
 	        				countShow = countShow +100;
 	        				getDataAgain(countShow);
 	        				numberIcon++;
 	        				console.log(numberIcon)
 	        				console.log(calculateTotalrang)
-	        				e.preventDefault();
-	        			}
+	        				//e.preventDefault();
+	        			// }
 	        		}else{
-	        			// numberIcon = 1;
+	        			calculateCount = 1;
 	        		}
 	        	})
+
+
 	        }
+
 	        function getDataAgain(countShow){
+
 	        	var url = "https://api.iconfinder.com/v2/icons/search?query="+checkText+"&count=100&premium=0&offset=";
 	        	url += ""+countShow;
 	        	$http.get(url).success(function(data){
+
 	        		placeData(data);
+
 	        	}).error(function(error, status){
 					console.log("Error"+error);
 					console.log("Error"+status);
 					location.reload();
 				});
+
 	        }
 	        function calculateCount() {
 	        	var totalCount = $scope.Topics.total_count;
@@ -212,6 +164,7 @@
 			}
 			//$scope.datas.Name.push($scope.Name);
 			//console.log($scope.datas);
+
 			$(".stloader").hide();
 		}
 		function getData(previewuUrl,iconName,linkDownloadPng,downloadUrlIco){
@@ -229,10 +182,6 @@
 		  {
 		    var getSearchtxt = $("#search").val();
 		    $scope.listIcon(getSearchtxt);
-		    $('html, body').animate({
-        	scrollTop: $('.item-list').offset().top
-		    }, 500);
-		    return false;
 		  }
 		}); 
 	})
@@ -256,9 +205,11 @@
 			//console.log(getSize[8]);
 		}
 		var sorting = changToInt.sort(function(a, b){return a-b});
+
 		for(var j = 0;j<sorting.length;j++){
 			getSize[8] = ""+sorting[j];
 			joining = getSize.join("/");
+
 			$(".PNG").append("<a class=link href="+joining+"><button class='btn btn-primary'>"+sorting[j]+"px</button></a>");
 		}
 		
@@ -266,6 +217,7 @@
 		//$("#myModalLabel").text(""+getName+"");
 		$('.linktoIcon').attr('href',''+getIconLink);
 	}
+
 	$('#myModal').on('hidden.bs.modal', function (e) {
   		$(".link").remove(".link");
 	 })
@@ -275,17 +227,13 @@
 // 	(function($) {
 //     var $window = $(window),
 //         $col = $('.item-list');
-//         $ads = $('.ads');
 //         //console.log($window);
 //     function resize() {
-//         if ($window.width() == 1920) {
+//         if ($window.width() <= 1306) {
 //         	$col.removeClass('col-md-offset-0');
-//         	$col.css('margin','0 auto');
+//         	$col.css('margin-left','0px');
 //         	$col.css('padding-left','0px');
-//         	$col.css('width','1120px');
-//         	$ads.css('width','350px');
-//         	$ads.css('left','1540px');
-//             return $col.addClass('col-md-offset-1');
+//             return $col.addClass('col-md-offset-0');
 //         }else{
 //         	$col.removeClass('col-md-offset-1');
 //             return $col.addClass('col-md-offset-0');
@@ -295,25 +243,6 @@
 //         .resize(resize)
 //         .trigger('resize');
 // })(jQuery);
-//change active menu when click
-$(function() {
-   $("li.menuclick").click(function() {
-      // remove classes from all
-      $("li.menuclick").removeClass("active");
-      // add class to the one we clicked
-      $(this).addClass("active");
-   });
-});
-</script>
-<script>
-	$(document).ready(function(){
-		$('#btnSearch').click(function(e){
-			$('html, body').animate({
-        	scrollTop: $('.item-list').offset().top
-		    }, 500);
-		    return false;
-		});
-	});
 
 </script>
 </html>

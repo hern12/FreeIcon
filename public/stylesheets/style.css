@@ -293,10 +293,27 @@ form {
   width: 100%;
   height: 250px;
 }
-.TextBox h1 , .mainAdvertis h1{
+.TextBox ul{
+    width: 100%;
+    margin: auto;
+}
+.TextBox h1,.mainAdvertis h1{
+   margin-top: 50px;
    text-align: center;
-   display: table-cell;
-   vertical-align: middle;
+   text-decoration: underline;
+}
+.TextBox h4{
+  margin-top: 20px; 
+  text-align: center;
+  font-size: 20px;
+}
+.TextBox ul li{
+  list-style-type: none;
+  line-height: 30px;
+  font-size: 18px;
+}
+.description{
+  padding: 0;
 }
 .mainAdvertis{
   display:  table;
@@ -375,7 +392,6 @@ hr{
 .stloader{
   margin-top: 20px;
 }
-<<<<<<< HEAD
 .commentBlock{
   padding-bottom: 30px;
 }
@@ -385,12 +401,3 @@ hr{
   text-align: center;
 }
 
-
-@media screen and (max-width: 1366px){
-.information , .footerContainer{
-  margin-left: 20px;
-  margin-right:20px;
-}
-
-
-}
