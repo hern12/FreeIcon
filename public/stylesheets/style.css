@@ -358,6 +358,14 @@ hr{
 .stloader{
   margin-top: 20px;
 }
+.commentBlock{
+  padding-bottom: 30px;
+}
+.commentHead{
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
 
 
 
