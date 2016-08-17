@@ -1,0 +1,35 @@
+<div class="container">
+	<nav class="navbar navbar-default navbar-fixed-top">
+		  <div class="container">
+		    <div class="navbar-header">
+		      <a class="navbar-brand" href="./">
+		        <img alt="Brand" src="img/logo.png" width="70" height="30">
+		      </a>
+		    </div>
+		    <ul class="nav navbar-nav">
+		    	<li class="active menuclick">
+			    	<a href="./">
+					    <span class="glyphicon icon-home"></span>
+					    <span class="glyphicon menuLink"> HOME</span>
+			    	</a>
+		    	</li>
+				<% include ./socialMenu %>
+			    <% include ./WebsiteIcons %>
+			    <li class="menuclick menuSearch">
+			    	<a href="./search">
+				    	<span class="glyphicon icon-search"></span>
+				    	<span class="glyphicon menuLink"> Search Icons</span>
+				    </a>
+			    </li>    
+		    </ul>
+		  </div>
+	</nav>
+</div>
+<script>
+	var pathname = window.location.pathname;
+	if(pathname == "/search"){
+	  $("li.menuclick").removeClass("active");
+      // add class to the one we clicked
+      $(".menuSearch").addClass("active");
+	}
+</script>
