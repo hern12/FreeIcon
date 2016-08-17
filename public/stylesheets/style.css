@@ -36,8 +36,9 @@ body {
   /*background-color: #eaeaea;*/
 }
 .item-list{
-  width: 702px;
+  width: 100%;
   height: 100%;
+  text-align:center;
   padding: 0;
   background-color: #fff;
   display: none;
@@ -46,11 +47,20 @@ body {
   box-shadow: 0 4px 2px 1px rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
   border-radius: 2px;
 }
+.showIcon{
+  margin-top: 15px;
+  padding: 0px;
+}
+.listArea{
+  border:1px solid red;
+  display: block;
+  margin: 0 auto;
+}
 .leftPopularDownload{
     /*position:absolute;*/
     /*right:983px; top:72px; bottom: 0; */
-    margin-top: 70px;
-    width: 250px;
+    margin-top: 0px;
+    width: 100%;
     height: 250px;
     padding: 0;
     background-color: #fff;
@@ -59,11 +69,10 @@ body {
 .leftPopularSearch{
     /*position:absolute;*/
     /*right:983px; top:332px; bottom: 0;*/
-    padding: 0;
+    padding: 0 0 1px 0;
     margin-top: 10px;
-    width: 250px;
+    width: 100%;
     height: 170px;
-    margin-right: 14px;
     background-color: #fff;
     box-shadow: 0 4px 2px 1px rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
 }
@@ -83,19 +92,19 @@ body {
 .IndexAds{
     /*position:absolute;*/
     /*right:0; top:72px; bottom: 0;left:999px;*/
-    width: 250px;
+    width: 100%;
     height: 250px;
     /*margin-right: 14px;*/
-    margin-top: 70px;
+    margin-top: 0px;
     padding: 0;
     background-color: #fff;
     box-shadow: 0 4px 2px 1px rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
 }
 .SidexAds{
     margin-top: 10px;
-    margin-left: 17px;
-    padding: 0;
-    width: 250px;
+    /*margin-left: 17px;*/
+    padding: 0 0 1px 0;
+    width: 100%;
     height: auto;
     background-color: #fff;
     box-shadow: 0 4px 2px 1px rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
@@ -131,6 +140,9 @@ body {
   background-color: #fff;
   box-shadow: 0 4px 2px 1px rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
 }
+.backmenu{
+  height: 60px;
+}
 a {
   color: #00B7FF;
 }
@@ -147,10 +159,11 @@ a {
   height: 70px;
 }
 .list{
+  display: inline-block;
   padding: 0;
-   border-radius: 5px;
+  border-radius: 5px;
   list-style-type: none;
-  margin: 10px 20px 10px 20px;
+  margin: 10px 10px 10px 19px;
   background-color: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
   width: 100px;
@@ -273,11 +286,11 @@ form {
 }
 .TextBox{
   display:  table;
-  margin:70px 16px 0 16px;
+  margin:0px 0px 0 0px;
   background-color: #fff;
   box-shadow: 0 4px 2px 1px rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
   border-radius: 2px;
-  width: 700px;
+  width: 100%;
   height: 250px;
 }
 .TextBox h1 , .mainAdvertis h1{
@@ -287,15 +300,19 @@ form {
 }
 .mainAdvertis{
   display:  table;
-  margin: 10px 0 0 2px;
+  margin: 10px 0 0 0px;
   background-color: #fff;
   box-shadow: 0 4px 2px 1px rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
   border-radius: 2px;
-  width: 700px;
+  width: 100%;
   height: 170px;
 }
+.banner{
+  /*width: 90%;*/
+  padding: 0;
+}
 .information{
-  width: 90%;
+  /*width: 90%;*/
   background-color: #fff;
   margin-top: 10px;
   box-shadow: 0 4px 2px 1px rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
@@ -333,9 +350,9 @@ hr{
 }
 .footer{
   width: 100%;
-  height: 150px;
+  height: 200px;
   background-color: #fff;
-  margin-top: 10px;
+  margin-top: 15px;
   box-shadow: 0 4px 2px 1px rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
   border-radius: 2px;
 }
@@ -358,10 +375,17 @@ hr{
 .stloader{
   margin-top: 20px;
 }
-
-
-
-@media screen and (min-width: 1366px){
+.setpaddingLeft{
+  padding-left: 0px;
+}
+.setpadding{
+  padding-left:5px;
+  padding-right:5px;
+}
+.setpaddingRight{
+  padding-right: 0px;
+}
+@media screen and (max-width: 1366px){
 .information , .footerContainer{
   margin-left: 20px;
   margin-right:20px;
