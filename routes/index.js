@@ -4,7 +4,7 @@ var getThDic = require('../public/thaiToEng/thai2eng.json');
 var getTxtData = require('../public/TxtData/data.json');
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index');
+  res.render('index',{title:"www.ไอคอน.com",des:"ศูนย์รวมไอคอนฟรี",first:getTxtData[""],second:getTxtData[""]});
 });
 // router.get('/getDic', function(req, res){
 router.get('/search', function(req, res, next) {
