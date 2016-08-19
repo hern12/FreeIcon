@@ -18,7 +18,7 @@
 			checkText = searchText;
 			numberIcon =1;
 			if(checkText == null ||checkText == undefined){
-				checkText = "facebook";
+				checkText = iconValname;
 				queryData(checkText);
 			}
 			// if($scope.post != undefined || $scope.post != null){
