@@ -1,26 +1,59 @@
-	<div class="bg">
+	<div class="">
 	    <div ng-app="FreeIcon">
-	    	<!-- <h1 class="HeadText">ฟรีไอคอน</h1> -->
 	    	<div class="spacing"></div>
-	    	<div ng-init ="listIcon()" ng-controller = "IconsController" class=""> <!--ng-init ="listIcon()"--> 
-	    	<div  class="container showIcon">
-	   			<ul class = "row item-list"> <!--  -->
+	    	<div ng-init ="listIcon()" ng-controller = "IconsController" class="">
+	    	<div  class="col-lg-9 setpadding setAds">
+	   			<ul class = "item-list"> 
 					<li ng-repeat="data in datas" class="col-xs-1 list" alt="ไอคอน เฟส">
 						<a href="#" class="img-block" onclick="showImageInModal(this);" data-toggle="modal" data-target="#myModal" >
 							<img ng-src="{{data.imgUrl}}" alt="img01" class="img-center" onerror="imgError(this);" >
-		<!-- 						<h4 class="hideDataName">{{data.name}}</h4> -->
 							<h4 class="dataLink" data-locations='{{data.linkDownloadPngFile}}'></h4>
 							<h4 class="hideDataName icoLink">{{data.icoLink}}</h4>	
 						</a>
 					</li>
 				</ul>
 			</div>
-				<center>
-					<div class="stloader">
-						<div class="loader"></div>
-						<h1>กำลังโหลดข้อมูล...</h1>
-					</div>			
-				</center>
+			<div class="col-lg-3 setpaddingRight">
+				<div class="SidexAds">
+					<div class="CategoriesHead">
+						<h4>Categories Check List</h4>
+					</div>
+					<ul>
+						<li>
+							<a href="">รวม Facebook Icon</a>
+						</li>
+						<li>
+							<a href="">รวม Youtube Icon</a>
+						</li>
+						<li>
+							<a href="">รวมไอคอนน่ารักๆ</a>
+						</li>
+						<li>
+							<a href="">รวมอีโมติคอน</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-lg-3 setpaddingLeft">
+				<div class="leftPopularSearch">
+				    <div class="CategoriesHead">
+						<h4>Popular Search</h4>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 setpaddingLeft">
+				<div class="leftPopularDownload">
+				    <div class="CategoriesHead">
+						<h4>Popular Download</h4>
+					</div>
+				</div>
+			</div>
+			<center>
+				<div class="col-lg-12 stloader">
+					<div class="loader"></div>
+					<h1>กำลังโหลดข้อมูล...</h1>
+				</div>			
+			</center>
 				<!-- Modal -->
 				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 				  <div class="modal-dialog" role="document">

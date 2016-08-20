@@ -21,26 +21,15 @@
 				checkText = iconValname;
 				queryData(checkText);
 			}
-			// if($scope.post != undefined || $scope.post != null){
-			// 	$http.post('/view1',$scope.post).
-		 //        success(function(data) {
-		 //            console.log("posted successfully");
-		 //            checkText = data;
-		 //            queryData(checkText);
-
-		 //        }).error(function(data) {
-		 //            console.error("error in posting");
-		 //        })
-	  //       }
 	        function queryData(checkText){
 	        	showUi();
-	        	var url = "https://api.iconfinder.com/v2/icons/search?query="+checkText+"&count=100&premium=0&offset=";
+	        	var url = "https://api.iconfinder.com/v2/icons/search?query="+checkText+"&count=35&premium=0&offset=";
 	        	$http.get(url).success(function(data){
 	        		$scope.datas = [];
 	        		console.log(checkText);
 	        		placeData(data);
 	        		calculateCount();
-	        		scrollingLoadData();
+	        		//scrollingLoadData();
 	        		if($scope.Topics.total_count == 0){
 						alert("ไม่มี Icon ที่คุณตามหา");
 					}
@@ -51,28 +40,22 @@
 	        }
 
 	        function scrollingLoadData(){
-	        	$(window).scroll(function(e) {
 	        		if(numberIcon < calculateTotalrang){
-	        			//if($(window).scrollTop() == $(document).height() - $(window).height()) {
 	        				showUi();
-	        				countShow = countShow +100;
+	        				countShow = countShow +35;
 	        				getDataAgain(countShow);
 	        				numberIcon++;
 	        				console.log(numberIcon)
 	        				console.log(calculateTotalrang)
-	        				//e.preventDefault();
-	        			// }
 	        		}else{
 	        			calculateCount = 1;
 	        		}
-	        	})
-
 
 	        }
 
 	        function getDataAgain(countShow){
 
-	        	var url = "https://api.iconfinder.com/v2/icons/search?query="+checkText+"&count=100&premium=0&offset=";
+	        	var url = "https://api.iconfinder.com/v2/icons/search?query="+checkText+"&count=35&premium=0&offset=";
 	        	url += ""+countShow;
 	        	$http.get(url).success(function(data){
 
@@ -87,7 +70,7 @@
 	        }
 	        function calculateCount() {
 	        	var totalCount = $scope.Topics.total_count;
-	        	calculateTotalrang = Math.floor(totalCount/100);
+	        	calculateTotalrang = Math.floor(totalCount/30);
 	        }
 			function showUi() {
 	        	$(".stloader").show();

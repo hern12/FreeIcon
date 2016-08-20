@@ -13,7 +13,36 @@ body {
   background-color: #eaeaea;
   padding: 0;
 }
-
+header{
+  height: 100px;
+  background-color:white;
+}
+.menuSocial:hover .dropdown-menu{
+  display: block;
+}
+.webIcon:hover .weblist{
+  display: block;
+}
+.os:hover .osList{
+  display: block;
+}
+.device:hover .deviceList{
+  display: block;
+}
+.head{
+  position: absolute;
+  right: 0;
+  background-color: white;
+}
+.nav.affix {
+    padding-left:3.7%;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index:9999;
+    left: 0;
+    right: 0;
+}
 .container { width: @container-desktop !important; }
 .nav{
   font-family: 'Oswald', sans-serif !important; 
@@ -28,6 +57,7 @@ body {
 }
 .navbar{
   margin-bottom: 0;
+  width: 100%;
 }
 .navbar-brand{
   padding-top: 10px;
@@ -36,14 +66,13 @@ body {
   /*background-color: #eaeaea;*/
 }
 .item-list{
-  width: 100%;
   height: 100%;
   text-align:center;
-  padding: 0;
+  padding: 0 0 0 5px;
   background-color: #fff;
   display: none;
   overflow: hidden;
-  margin: 0 auto;
+  margin: 10px auto;
   box-shadow: 0 4px 2px 1px rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
   border-radius: 2px;
 }
@@ -59,9 +88,9 @@ body {
 .leftPopularDownload{
     /*position:absolute;*/
     /*right:983px; top:72px; bottom: 0; */
-    margin-top: 0px;
+    margin-top: 10px;
     width: 100%;
-    height: 250px;
+    height: 170px;
     padding: 0;
     background-color: #fff;
     box-shadow: 0 4px 2px 1px rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
@@ -72,9 +101,12 @@ body {
     padding: 0 0 1px 0;
     margin-top: 10px;
     width: 100%;
-    height: 170px;
+    height: 260px;
     background-color: #fff;
     box-shadow: 0 4px 2px 1px rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+}
+.setAds{
+  height: 623px;
 }
 .ads{
     position:absolute;
@@ -163,7 +195,7 @@ a {
   padding: 0;
   border-radius: 5px;
   list-style-type: none;
-  margin: 10px 10px 10px 19px;
+  margin: 10px 10px 10px 10px;
   background-color: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
   width: 100px;
@@ -312,6 +344,9 @@ form {
   line-height: 30px;
   font-size: 18px;
 }
+.setpadding{
+  padding: 0;
+}
 .description{
   padding: 0;
 }
@@ -390,8 +425,11 @@ hr{
   color:#34495e;
 }
 .stloader{
-  margin-top: 20px;
-  height: 500px;
+  position: absolute;
+  top: 400px;
+  right: 120px;
+  margin-top: 100px;
+  height: 700px;
 }
 .commentBlock{
   padding-bottom: 30px;

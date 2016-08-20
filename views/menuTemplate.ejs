@@ -1,11 +1,15 @@
+<header>
+ 	<div class="container">
+ 		<div class="row">
+ 			<a class="navbar-brand" href="./">
+		        <img alt="Brand" src="img/logo.png" width="140" height="60">
+		    </a>
+ 		</div>
+ 	</div>
+</header>
 <div class="container">
-	<nav class="navbar navbar-default navbar-fixed-top">
-		  <div class="container">
-		    <div class="navbar-header">
-		      <a class="navbar-brand" href="./">
-		        <img alt="Brand" src="img/logo.png" width="70" height="30">
-		      </a>
-		    </div>
+	<nav class="navbar navbar-default head nav" id="">
+		  <div class="container setpadding">
 		    <ul class="nav navbar-nav">
 		    	<li class="active menuclick">
 			    	<a href="./">
@@ -25,6 +29,13 @@
 		  </div>
 	</nav>
 </div>
+<script>
+	$('.nav').affix({
+      offset: {
+        top: $('header').height()
+      }
+	});	
+</script>
 <script>
 	var pathname = window.location.pathname;
 	if(pathname == "/search"){
