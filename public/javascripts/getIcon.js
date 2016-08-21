@@ -23,7 +23,7 @@
 			}
 	        function queryData(checkText){
 	        	showUi();
-	        	var url = "https://api.iconfinder.com/v2/icons/search?query="+checkText+"&count=35&premium=0&offset=";
+	        	var url = "https://api.iconfinder.com/v2/icons/search?query="+checkText+"&count=35&premium=0";
 	        	$http.get(url).success(function(data){
 	        		$scope.datas = [];
 	        		console.log(checkText);
@@ -71,14 +71,26 @@
 	        	$(".page-item").click(function(event) {
 	        		$(".page-item.active").removeClass("active");
 	        		$("#"+this.id).addClass("active");
-	        		$scope.datas = [];
 				    getDataAgain(this.id);
 				 });
+	        	$("#next").click(function(){
+	        		$("li.active").next().addClass("active");
+	        		$("li.active").prev().removeClass("active");
+	        		var getID = $("li.active")[1].id;
+	        		getDataAgain(getID);
+	        	});
+	        	$("#prev").click(function(){
+	        		$("li.active").prev().addClass("active");
+	        		$("li.active").next().removeClass("active");
+	        		var getID = $("li.active")[1].id;
+	        		getDataAgain(getID);
+	        	});
 	        }
 	        function getDataAgain(countShow){
+	        	$scope.datas = [];
 	        	console.log(countShow);
 	        	showUi();
-	        	var url = "https://api.iconfinder.com/v2/icons/search?query="+checkText+"&count=35&premium=0&offset=";
+	        	var url = "https://api.iconfinder.com/v2/icons/search?query="+checkText+"&count=50&premium=0&offset=";
 	        	url += ""+countShow;
 	        	$http.get(url).success(function(data){
 

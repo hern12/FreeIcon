@@ -69,7 +69,7 @@ header{
 .item-list{
   height: 100%;
   text-align:center;
-  padding: 0 0 0 5px;
+  padding: 15px 0 0 5px;
   background-color: #fff;
   display: none;
   overflow: hidden;
