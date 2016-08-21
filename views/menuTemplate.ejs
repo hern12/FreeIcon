@@ -11,7 +11,7 @@
 	<nav class="navbar navbar-default head nav" id="">
 		  <div class="container setpadding">
 		    <ul class="nav navbar-nav">
-		    	<li class="active menuclick">
+		    	<li class="active menuclick home">
 			    	<a href="./">
 					    <span class="glyphicon icon-home"></span>
 					    <span class="glyphicon menuLink"> HOME</span>
@@ -30,11 +30,11 @@
 	</nav>
 </div>
 <script>
-	$('.nav').affix({
-      offset: {
-        top: $('header').height()
-      }
-	});	
+	// $('.nav').affix({
+ //      offset: {
+ //        top: $('header').height()
+ //      }
+	// });	
 </script>
 <script>
 	var pathname = window.location.pathname;
@@ -76,36 +76,36 @@
 	  window.iconValname = "windows";
 	  $("li.menuclick").removeClass("active");
       // add class to the one we clicked
-      $(".menuSocial").addClass("active");
+      $(".menuWeb").addClass("active");
 	}else if(pathname == "/ios"){
 	  window.iconValname = "ios";
 	  $("li.menuclick").removeClass("active");
       // add class to the one we clicked
-      $(".menuSocial").addClass("active");
+      $(".menuWeb").addClass("active");
 	}else if(pathname == "/android"){
 	  window.iconValname = "android";
 	  $("li.menuclick").removeClass("active");
       // add class to the one we clicked
-      $(".menuSocial").addClass("active");
+      $(".menuWeb").addClass("active");
 	}else if(pathname == "/computer"){
 	  window.iconValname = "computer";
 	  $("li.menuclick").removeClass("active");
       // add class to the one we clicked
-      $(".menuSocial").addClass("active");
+      $(".menuWeb").addClass("active");
 	}else if(pathname == "/iphone"){
 	  window.iconValname = "iphone";
 	  $("li.menuclick").removeClass("active");
       // add class to the one we clicked
-      $(".menuSocial").addClass("active");
+      $(".menuWeb").addClass("active");
 	}else if(pathname == "/printer"){
 	  window.iconValname = "printer";
 	  $("li.menuclick").removeClass("active");
       // add class to the one we clicked
-      $(".menuSocial").addClass("active");
+      $(".menuWeb").addClass("active");
 	}else if(pathname == "/camera"){
 	  window.iconValname = "camera";
 	  $("li.menuclick").removeClass("active");
       // add class to the one we clicked
-      $(".menuSocial").addClass("active");
+      $(".menuWeb").addClass("active");
 	}
 </script>

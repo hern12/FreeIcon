@@ -6,14 +6,14 @@
 		$scope.icoLink =[];
 		var calculateTotalrang = 1;
 		var numberIcon = 1;
-		var countShow = 1;
+		var countShow = 35;
 		var checkText = "";
 		var linkDownloadPng = [];
 		$(".stloader").hide();
 		$scope.listIcon = function(searchText){
 			calculateTotalrang =1;
 			$scope.datas = [];
-			countShow = 1;
+			countShow = 0;
 			$scope.imgUrl = [];
 			checkText = searchText;
 			numberIcon =1;
@@ -29,7 +29,7 @@
 	        		console.log(checkText);
 	        		placeData(data);
 	        		calculateCount();
-	        		//scrollingLoadData();
+	        		scrollingLoadData();
 	        		if($scope.Topics.total_count == 0){
 						alert("ไม่มี Icon ที่คุณตามหา");
 					}
@@ -40,21 +40,44 @@
 	        }
 
 	        function scrollingLoadData(){
-	        		if(numberIcon < calculateTotalrang){
-	        				showUi();
-	        				countShow = countShow +35;
-	        				getDataAgain(countShow);
-	        				numberIcon++;
-	        				console.log(numberIcon)
-	        				console.log(calculateTotalrang)
-	        		}else{
-	        			calculateCount = 1;
-	        		}
+	        		pagination(calculateTotalrang);
+	        		// if(numberIcon < calculateTotalrang){
+	        		// 		showUi();
+	        		// 		countShow = countShow +35;
+	        		// 		getDataAgain(countShow);
+	        		// 		numberIcon++;
+	        		// 		console.log(numberIcon)
+	        		// 		console.log(calculateTotalrang)
+	        		// }else{
+	        		// 	calculateCount = 1;
+	        		// }
+
 
 	        }
-
+	        function pagination(calculateTotalrang){
+	        	var storePage = []
+	        	for(var i =1;i<=calculateTotalrang; i++){
+	        		storePage.push(i);
+	        	}
+	        	console.log(storePage);
+	        	for(var j =1;j<=5;j++){
+		        	$("<li class=page-item id="+countShow+"><a class=page-link href=javascript:void(0)>"+j+"</a></li>").insertBefore(".addPage");
+		        	countShow = countShow +35;
+	        	}
+	        	$("#0").addClass("active");
+	        	clickFunction();
+	        }
+	        function clickFunction(){
+	        	$(".page-item").click(function(event) {
+	        		$(".page-item.active").removeClass("active");
+	        		$("#"+this.id).addClass("active");
+	        		$scope.datas = [];
+				    getDataAgain(this.id);
+				 });
+	        }
 	        function getDataAgain(countShow){
-
+	        	console.log(countShow);
+	        	showUi();
 	        	var url = "https://api.iconfinder.com/v2/icons/search?query="+checkText+"&count=35&premium=0&offset=";
 	        	url += ""+countShow;
 	        	$http.get(url).success(function(data){
@@ -70,7 +93,7 @@
 	        }
 	        function calculateCount() {
 	        	var totalCount = $scope.Topics.total_count;
-	        	calculateTotalrang = Math.floor(totalCount/30);
+	        	calculateTotalrang = Math.floor(totalCount/35);
 	        }
 			function showUi() {
 	        	$(".stloader").show();
