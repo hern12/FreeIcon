@@ -4,13 +4,18 @@
 	    	<div ng-init ="listIcon()" ng-controller = "IconsController" class="">
 	    	<div  class="col-lg-9 setpadding setAds">
 	   			<ul class = "item-list"> 
-					<li ng-repeat="data in datas" ng-class='rowClass(data, $index)' ng-attr-data-toggle="{{datas.length}}" repeat-end="onEnd()" class="col-xs-1 list" alt="ไอคอน เฟส">
-						<a href="#" class="img-block" onclick="showImageInModal(this);" data-toggle="modal" data-target="#myModal" >
-							<img ng-src="{{data.imgUrl}}" alt="img01" class="img-center" onerror="imgError(this);" >
-							<h4 class="dataLink" data-locations='{{data.linkDownloadPngFile}}'></h4>
-							<h4 class="hideDataName icoLink">{{data.icoLink}}</h4>	
-						</a>
-					</li>
+	   				<li dir-paginate="data in datas | itemsPerPage: 35" class="col-xs-1 list" >
+	   					<a href="#" class="img-block" onclick="showImageInModal(this);" data-toggle="modal" data-target="#myModal" >
+	   						<img ng-src="{{data.imgUrl}}" alt="img01" class="img-center" onerror="imgError(this);" >
+	   						<h4 class="dataLink" data-locations='{{data.linkDownloadPngFile}}'></h4>
+							<h4 class="hideDataName icoLink">{{data.icoLink}}</h4>
+	   					</a>
+	   				</li>
+	   			<center>
+	   			<div class="col-md-12">
+			 		<dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="./javascripts/dirPagination.tpl.html" max-size="7"></dir-pagination-controls>
+			 	</div>
+			 	</center>
 				</ul>
 			</div>
 			<div class="col-lg-3 setpaddingRight">
@@ -84,3 +89,4 @@
 	    	</div>
 	    </div>
 	 </div><!-- container -->
+   

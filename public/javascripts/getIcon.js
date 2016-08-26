@@ -1,5 +1,8 @@
-var app = angular.module("FreeIcon", []);
+var app = angular.module("FreeIcon", ['angularUtils.directives.dirPagination']);
 app.controller("IconsController", function($scope, $http) {
+
+	$scope.test = [5,6,7,8,9,10]
+
     $scope.Topics = [];
     $scope.datas = [];
     $scope.adding = [];
@@ -44,38 +47,9 @@ app.controller("IconsController", function($scope, $http) {
 
         function scrollingLoadData() {
             pagination(calculateTotalrang);
-            // if(numberIcon < calculateTotalrang){
-            // 		showUi();
-            // 		countShow = countShow +35;
-            // 		getDataAgain(countShow);
-            // 		numberIcon++;
-            // 		console.log(numberIcon)
-            // 		console.log(calculateTotalrang)
-            // }else{
-            // 	calculateCount = 1;
-            // }
-
-
         }
 
         function pagination(calculateTotalrang) {
-            $("#demo1").paginate({
-				count 		: calculateTotalrang,
-				start 		: 1,
-				display     : 7,
-				border					: true,
-				border_color			: '#fff',
-				text_color  			: '#fff',
-				background_color    	: 'black',	
-				border_hover_color		: '#ccc',
-				text_hover_color  		: '#000',
-				background_hover_color	: '#fff', 
-				images					: false,
-				mouse					: 'press',
-				onChange     			: function(page){
-											$('._current').removeClass('_current').hide();
-										  }
-			});
 			for(var i = 1 ; i<=calculateTotalrang;i++){
 				$('.jPag-pages li.'+i).attr('id',""+countShow);
 				countShow = countShow + 35;
@@ -99,24 +73,6 @@ app.controller("IconsController", function($scope, $http) {
         	}
         }
 
-        function clickFunction() {
-            var countNextandPrev = 0;
-            var checkDataID = null;
-            $(".page-item").click(function(event) {
-                $(".page-item.active").removeClass("active");
-                $("#" + this.id).addClass("active");
-                checkDataID = parseInt(this.id)+35;
-                var keepData =[]
-                keepData.push(checkDataID);
-                console.log(keepData);
-            });
-            $("#next").click(function() {
-
-            });
-            $("#prev").click(function() {
-
-            });
-        }
 
         function getDataAgain() {
             //$scope.datas = [];
@@ -210,7 +166,7 @@ app.controller("IconsController", function($scope, $http) {
             linkDownloadPngFile: linkDownloadPng,
             icoLink: downloadUrlIco
         })
-
+        console.log($scope.datas);
     }
 
 

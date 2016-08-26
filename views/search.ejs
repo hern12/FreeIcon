@@ -65,9 +65,8 @@
 	 </div><!-- container -->
 	 <% include ./footer %>	
 </body>
-<script type="text/javascript" src="./javascripts/angular.js"></script>
 <script>
-	var app = angular.module("FreeIcon",[]);
+	var app = angular.module("FreeIcon",['angularUtils.directives.dirPagination']);
 	app.controller("IconsController",function($scope,$http){
 		$scope.Topics = [];
 		$scope.datas = [];

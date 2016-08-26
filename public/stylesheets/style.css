@@ -107,7 +107,7 @@ header{
     box-shadow: 0 4px 2px 1px rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
 }
 .setAds{
-  height: 623px;
+  height: 700px;
 }
 .ads{
     position:absolute;
@@ -441,3 +441,6 @@ hr{
   text-align: center;
 }
 
+.pagination>li>a{
+  color: black;
+}
