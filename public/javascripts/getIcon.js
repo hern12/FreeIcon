@@ -4,11 +4,14 @@ app.controller("IconsController", function($scope, $http) {
     $scope.datas = [];
     $scope.adding = [];
     $scope.icoLink = [];
+    var checkNum = null;
+    var storeNum = [];
     var calculateTotalrang = 1;
     var numberIcon = 1;
     var countShow = 0;
     var checkText = "";
     var countPage = 5;
+    var countDatas = null;
     var linkDownloadPng = [];
     $(".stloader").hide();
     $scope.listIcon = function(searchText) {
@@ -71,7 +74,6 @@ app.controller("IconsController", function($scope, $http) {
 				mouse					: 'press',
 				onChange     			: function(page){
 											$('._current').removeClass('_current').hide();
-											$('#p'+page).addClass('_current').show();
 										  }
 			});
 			for(var i = 1 ; i<=calculateTotalrang;i++){
@@ -88,9 +90,12 @@ app.controller("IconsController", function($scope, $http) {
         function showHidefunc(id){
         	//console.log($scope.datas.length);
         	var idNum = parseInt(id);
+        	
         	for(var i = idNum; i<=idNum + 35;i++){
-        		console.log($('.item-list').find("li:eq("+i+")"));
-        		$('.item-list').find("li:eq("+i+")").addClass('_current').show();
+        		$(function () {
+        			console.log(i);
+        			$('.item-list').find("li:eq("+i+")").addClass('_current').show();
+        		});
         	}
         }
 
@@ -163,22 +168,25 @@ app.controller("IconsController", function($scope, $http) {
                     linkDownloadPng.push(downloadUrlName);
                     //console.log(linkDownloadPng);
                     //console.log(downloadIcoUrl);
-                    if (previewuUrl) {
+                    if (previewuUrl) {                
                         if (rasterSize === 512) {
                             getData(previewuUrl, "", linkDownloadPng, downloadIcoUrl);
+                            checkNum++;
                             //console.log(linkDownloadPng);
                             break;
                         }
                         if (rasterSize === 256) {
                             getData(previewuUrl, "", linkDownloadPng, downloadIcoUrl);
+                            checkNum++;
                             //console.log(linkDownloadPng);
                             break;
                         }
                         if (rasterSize === 128) {
                             getData(previewuUrl, "", linkDownloadPng, downloadIcoUrl);
+                            checkNum++;
                             //console.log(linkDownloadPng);
                             break;
-                        }
+                        }                 
                     }
                 }
             }
@@ -187,6 +195,9 @@ app.controller("IconsController", function($scope, $http) {
             linkDownloadPng = [];
             downloadIcoUrl = "";
         }
+        
+        storeNum.push(Math.floor(checkNum/35));
+
         //$scope.datas.Name.push($scope.Name);
 
         $(".stloader").hide();
@@ -202,11 +213,11 @@ app.controller("IconsController", function($scope, $http) {
 
     }
 
+
     $scope.rowClass = function(item, index){
          if(index >= 0 && index < 35){
              return '_current';
-         }
-        return '';
+         }	
     };
 
     $('#search').keypress(function(e) {

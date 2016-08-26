@@ -63,6 +63,7 @@ router.get('/camera', function(req, res, next) {
   res.render('camera',{title:getTxtData[13].title,des:getTxtData[13].description,
 						first:getTxtData[13].first,second:getTxtData[13].second});
 });
+
 // });
 router.post('/view1', function(req, res) {
 	res.setHeader('Content-Type', 'text/plain');
