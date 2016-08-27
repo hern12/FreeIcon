@@ -86,7 +86,7 @@
 			checkText = searchText;
 			numberIcon =1;
 			if(checkText == null ||checkText == undefined){
-				checkText = "google";
+				checkText = "search";
 				queryData(checkText);
 			}
 			if($scope.post != undefined || $scope.post != null){
@@ -103,11 +103,12 @@
 	        	showUi();
 	        	var url = "https://api.iconfinder.com/v2/icons/search?query="+checkText+"&count=100&premium=0&offset=";
 	        	$http.get(url).success(function(data){
+	        		$(".stloader").hide();
 	        		$scope.datas = [];
 	        		console.log(checkText);
 	        		placeData(data);
 	        		calculateCount();
-	        		scrollingLoadData();
+	        		getDataAgain();
 	        		if($scope.Topics.total_count == 0){
 						alert("ไม่มี Icon ที่คุณตามหา");
 					}
@@ -115,37 +116,25 @@
 					location.reload();
 				});
 	        }
-	        function scrollingLoadData(){
-	        	$(window).scroll(function(e) {
-	        		if(numberIcon < calculateTotalrang){
-	        			if($(window).scrollTop() < $(document).height() - $(window).height()) {
-	        				showUi();
-	        				countShow = countShow +100;
-	        				getDataAgain(countShow);
-	        				numberIcon++;
-	        				console.log(numberIcon)
-	        				console.log(calculateTotalrang)
-	        				e.preventDefault();
-	        			}
-	        		}else{
-	        			// numberIcon = 1;
-	        		}
-	        	})
-	        }
 	        function getDataAgain(countShow){
-	        	var url = "https://api.iconfinder.com/v2/icons/search?query="+checkText+"&count=100&premium=0&offset=";
-	        	url += ""+countShow;
-	        	$http.get(url).success(function(data){
-	        		placeData(data);
-	        	}).error(function(error, status){
-					console.log("Error"+error);
-					console.log("Error"+status);
-					location.reload();
-				});
+	        	var	count = 100;
+	        	for(var i = 1;i<calculateTotalrang;i++){
+	            	count = count + 100;
+	            	var url = "https://api.iconfinder.com/v2/icons/search?query=" + checkText + "&count=100&premium=0&offset=";
+		            url += "" + count;
+		            $http.get(url).success(function(data) {
+		                placeData(data);
+
+		            }).error(function(error, status) {
+		                console.log("Error" + error);
+		                console.log("Error" + status);
+		                location.reload();
+		            });
+            	}
 	        }
 	        function calculateCount() {
 	        	var totalCount = $scope.Topics.total_count;
-	        	calculateTotalrang = Math.floor(totalCount/100);
+            	calculateTotalrang = Math.floor(totalCount / 35);
 	        }
 			function showUi() {
 	        	$(".stloader").show();

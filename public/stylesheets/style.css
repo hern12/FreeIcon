@@ -108,6 +108,7 @@ header{
 }
 .setAds{
   height: 700px;
+  margin-bottom: 10px;
 }
 .ads{
     position:absolute;
@@ -398,6 +399,15 @@ form {
   margin:0;
   vertical-align: middle;
 }
+.lpng{
+  background-color: #2ecc71;
+  margin-bottom: 0px;
+  padding: 6px 12px;
+  display: inline-block;
+  border-radius:4px;
+  color:white;
+  vertical-align:middle; 
+}
 hr{
   margin:5px 0 5px 0;
 }
@@ -443,4 +453,19 @@ hr{
 
 .pagination>li>a{
   color: black;
+}
+.license{
+  margin-bottom: 5px;
+}
+.showImg img{
+  margin-bottom: 10px;
+  padding-bottom: 0;
+}
+.licenseName{
+  padding-left: 5px;
+  cursor: pointer;
+}
+.webSiteName{
+  padding-left: 5px;
+  cursor: pointer;
 }

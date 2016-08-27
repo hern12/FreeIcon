@@ -1,7 +1,6 @@
 var app = angular.module("FreeIcon", ['angularUtils.directives.dirPagination']);
 app.controller("IconsController", function($scope, $http) {
 
-	$scope.test = [5,6,7,8,9,10]
 
     $scope.Topics = [];
     $scope.datas = [];
@@ -34,45 +33,14 @@ app.controller("IconsController", function($scope, $http) {
             var url = "https://api.iconfinder.com/v2/icons/search?query=" + checkText + "&count=100&premium=0";
             $http.get(url).success(function(data) {
                 $scope.datas = [];
-                console.log(checkText);
                 placeData(data);
                 calculateCount();
                 getDataAgain();
-                scrollingLoadData();
             }).error(function(data) {
                 location.reload();
             });
 
         }
-
-        function scrollingLoadData() {
-            pagination(calculateTotalrang);
-        }
-
-        function pagination(calculateTotalrang) {
-			for(var i = 1 ; i<=calculateTotalrang;i++){
-				$('.jPag-pages li.'+i).attr('id',""+countShow);
-				countShow = countShow + 35;
-			}
-
-			$('.jPag-pages li').click(function(){
-				showHidefunc(this.id);
-			})
-
-            //clickFunction();
-        }
-        function showHidefunc(id){
-        	//console.log($scope.datas.length);
-        	var idNum = parseInt(id);
-        	
-        	for(var i = idNum; i<=idNum + 35;i++){
-        		$(function () {
-        			console.log(i);
-        			$('.item-list').find("li:eq("+i+")").addClass('_current').show();
-        		});
-        	}
-        }
-
 
         function getDataAgain() {
             //$scope.datas = [];
@@ -85,7 +53,6 @@ app.controller("IconsController", function($scope, $http) {
 	            url += "" + count;
 	            $http.get(url).success(function(data) {
 	                placeData(data);
-
 	            }).error(function(error, status) {
 	                console.log("Error" + error);
 	                console.log("Error" + status);
@@ -93,7 +60,7 @@ app.controller("IconsController", function($scope, $http) {
 	            });
             }          
         }
-
+        
         function calculateCount() {
             var totalCount = $scope.Topics.total_count;
             calculateTotalrang = Math.floor(totalCount / 35);
@@ -109,36 +76,37 @@ app.controller("IconsController", function($scope, $http) {
         for (var i = 0; i < $scope.Topics.icons.length; i++) {
             var downloadIcoUrl = "https://api.iconfinder.com/v2";
             if ($scope.Topics.icons[i].containers[0] === undefined) {
-                //console.log(i);
-                // break;
+
             } else {
                 var downloadUrlIco = $scope.Topics.icons[i].containers[0].download_url;
                 downloadIcoUrl += downloadUrlIco;
+
                 for (var j = 0; j < $scope.Topics.icons[i].raster_sizes.length; j++) {
                     var rasterSize = $scope.Topics.icons[i].raster_sizes[j].size_width;
                     var previewuUrl = $scope.Topics.icons[i].raster_sizes[j].formats[0].preview_url;
                     //var iconName = $scope.Topics.icons[i].categories[0].name;
                     //console.log($scope.Topics.icons[i]);
                     var downloadUrlName = "https://api.iconfinder.com/v2";
+                    var iconId = $scope.Topics.icons[i].icon_id
                     downloadUrlName += $scope.Topics.icons[i].raster_sizes[j].formats[0].download_url;
                     linkDownloadPng.push(downloadUrlName);
                     //console.log(linkDownloadPng);
                     //console.log(downloadIcoUrl);
                     if (previewuUrl) {                
                         if (rasterSize === 512) {
-                            getData(previewuUrl, "", linkDownloadPng, downloadIcoUrl);
+                            getData(previewuUrl, "", linkDownloadPng, downloadIcoUrl,iconId);
                             checkNum++;
                             //console.log(linkDownloadPng);
                             break;
                         }
                         if (rasterSize === 256) {
-                            getData(previewuUrl, "", linkDownloadPng, downloadIcoUrl);
+                            getData(previewuUrl, "", linkDownloadPng, downloadIcoUrl,iconId);
                             checkNum++;
                             //console.log(linkDownloadPng);
                             break;
                         }
                         if (rasterSize === 128) {
-                            getData(previewuUrl, "", linkDownloadPng, downloadIcoUrl);
+                            getData(previewuUrl, "", linkDownloadPng, downloadIcoUrl,iconId);
                             checkNum++;
                             //console.log(linkDownloadPng);
                             break;
@@ -159,22 +127,16 @@ app.controller("IconsController", function($scope, $http) {
         $(".stloader").hide();
     }
 
-    function getData(previewuUrl, iconName, linkDownloadPng, downloadUrlIco) {
+    function getData(previewuUrl, iconName, linkDownloadPng, downloadUrlIco,iconId) {
         $scope.datas.push({
             imgUrl: previewuUrl,
             name: iconName,
             linkDownloadPngFile: linkDownloadPng,
-            icoLink: downloadUrlIco
+            icoLink: downloadUrlIco,
+            saveIconId: iconId
         })
-        console.log($scope.datas);
     }
 
-
-    $scope.rowClass = function(item, index){
-         if(index >= 0 && index < 35){
-             return '_current';
-         }	
-    };
 
     $('#search').keypress(function(e) {
         var key = e.which;
@@ -197,7 +159,8 @@ function showImageInModal(imageLink) {
     //var getName = $(imageLink).children().text();
     var getLink = $(imageLink).find(".dataLink").data('locations');
     var getIconLink = $(imageLink).find(".icoLink").text();
-    //console.log(getIconLink);
+    var getIconId = $(imageLink).find(".icoID").text();
+    getLicense(getIconId);
     var changToInt = [];
     var getSize = [];
     var joining;
@@ -222,6 +185,74 @@ function showImageInModal(imageLink) {
     $('.linktoIcon').attr('href', '' + getIconLink);
 }
 
+function getLicense(getIconId){
+    var url = "https://api.iconfinder.com/v2/icons/"+getIconId;
+    $.ajax({
+      method: "GET",
+      url: url,
+    })
+    .done(function( data ) {
+        var iconLicense = data.iconset.license.name;
+        var getIconWeb = data.iconset.website_url;
+        console.log(getIconWeb);
+        if(getIconWeb != undefined){
+            $('.visit').show();
+            $('.webSiteName').unbind('click');
+            $('.webSiteName').text(getIconWeb).click(function(){
+                    window.open(getIconWeb);
+            });;
+        }else if(getIconWeb == undefined){
+             $('.webSiteName').text("");
+             $('.visit').hide();
+        }
+
+
+
+        if(iconLicense == "Creative Commons (Attribution 3.0 Unported)"){
+             $(".licenseName").unbind('click');
+             $(".licenseName").text(iconLicense);
+             $(".licenseName").css('color','#00B7FF').click(function(){
+                window.open("https://creativecommons.org/licenses/by/3.0/");
+             });
+             return false;
+        }if(iconLicense == "Free for commercial use"){
+            $(".licenseName").unbind('click');
+            $(".licenseName").text("สามารถใช้ในเชิงพาณิชย์");
+            $(".licenseName").attr('href','javascript:void(0)').css('color','black');
+            return false;
+        }if(iconLicense == "Creative Commons (Attribution-Share Alike 3.0 Unported)"){
+             $(".licenseName").unbind('click');
+             $(".licenseName").text(iconLicense);
+             $(".licenseName").css('color','#00B7FF').click(function(){
+                window.open("https://creativecommons.org/licenses/by-sa/3.0/");
+             });
+             return false;
+        }if(iconLicense == "Creative Commons (Attribution-Share Alike 3.0 Unported)"){
+             $(".licenseName").unbind('click');
+             $(".licenseName").text("สามารถใช้ในเชิงพาณิชย์(ห้ามนำไปขายหรือแจกจ่าย)");
+             $(".licenseName").attr('href','javascript:void(0)').css('color','black');
+             return false;
+        }if(iconLicense == "Free for personal use only"){
+             $(".licenseName").unbind('click');
+             $(".licenseName").text("ใช้ได้โดยไม่เกี่ยวข้องกับการค้า");
+             $(".licenseName").attr('href','javascript:void(0)').css('color','black');
+             return false;
+        }if(iconLicense == "Creative Commons (Attribution 2.5 Generic)"){
+             $(".licenseName").unbind('click');
+             $(".licenseName").text(iconLicense);
+             $(".licenseName").css('color','#00B7FF').click(function(){
+                window.open("https://creativecommons.org/licenses/by-sa/3.0/");
+             });
+             return false;
+        }if(iconLicense == "Free for commercial use (Include link to authors website)"){
+             $(".licenseName").unbind('click');
+             $(".licenseName").text(iconLicense);
+             $(".licenseName").attr('href','javascript:void(0)').css('color','black');
+             return false;
+        }
+        
+    });
+}
 $('#myModal').on('hidden.bs.modal', function(e) {
     $(".link").remove(".link");
 })

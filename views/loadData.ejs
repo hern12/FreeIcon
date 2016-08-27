@@ -9,6 +9,7 @@
 	   						<img ng-src="{{data.imgUrl}}" alt="img01" class="img-center" onerror="imgError(this);" >
 	   						<h4 class="dataLink" data-locations='{{data.linkDownloadPngFile}}'></h4>
 							<h4 class="hideDataName icoLink">{{data.icoLink}}</h4>
+							<h4 class="hideDataName icoID">{{data.saveIconId}}</h4>
 	   					</a>
 	   				</li>
 	   			<center>
@@ -25,16 +26,16 @@
 					</div>
 					<ul>
 						<li>
-							<a href="">รวม Facebook Icon</a>
+							<a href="./facebook">รวม Facebook Icon</a>
 						</li>
 						<li>
-							<a href="">รวม Youtube Icon</a>
+							<a href="./youtube">รวม Youtube Icon</a>
 						</li>
 						<li>
-							<a href="">รวมไอคอนน่ารักๆ</a>
+							<a href="./google">รวม Google Icon</a>
 						</li>
 						<li>
-							<a href="">รวมอีโมติคอน</a>
+							<a href="/Instagram">รวม Instagram Icon</a>
 						</li>
 					</ul>
 				</div>
@@ -53,8 +54,10 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-lg-9">
-				<div id="demo1"></div>
+			<div class="col-lg-9 setpadding">
+				<div class="mainAdvertis">
+					<h1></h1>
+				</div>
 			</div>
 			<center>
 				<div class="col-lg-12 stloader">
@@ -72,13 +75,15 @@
 				      </div>
 				      <div class="modal-body showImg">
 				        <center><img class="mdImg" src=""></center>
+				        <center><span><b>ประเภทของลิขสิทธิ์:</b></span><span><a class="licenseName"></a></span>
+				        <br/>
+				        <span class="visit"><b>เยี่ยมชมเว็บไซต์:</b></span><span><a class="webSiteName"></a></span></center>
 				      </div>
 				      <div class="modal-footer PNG">
-				      	<button type="button" class="btn btn-success" data-dismiss="modal">ไฟล์นามสกุล PNG</button>
-				        
+				      	<div class="lpng" data-dismiss="modal">ไฟล์นามสกุล PNG</div>
 				      </div>
 				      <div class="modal-footer">
-				      	<button type="button" class="btn btn-success" data-dismiss="modal">ไฟล์นามสกุล ICON</button>
+				      	<div class="lpng" data-dismiss="modal">ไฟล์นามสกุล PNG</div>
 				      	<a href="" class="linktoIcon">
 				      		<button class='btn btn-primary'>Download</button>
 				      	</a>
