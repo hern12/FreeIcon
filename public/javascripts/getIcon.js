@@ -217,7 +217,7 @@ function getLicense(getIconId){
              return false;
         }if(iconLicense == "Free for commercial use"){
             $(".licenseName").unbind('click');
-            $(".licenseName").text("สามารถใช้ในเชิงพาณิชย์");
+            $(".licenseName").text("สามารถใช้ในเชิงพาณิชย์ (เชิงการค้า)");
             $(".licenseName").attr('href','javascript:void(0)').css('color','black');
             return false;
         }if(iconLicense == "Creative Commons (Attribution-Share Alike 3.0 Unported)"){
