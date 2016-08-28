@@ -249,6 +249,117 @@ function getLicense(getIconId){
              $(".licenseName").text(iconLicense);
              $(".licenseName").attr('href','javascript:void(0)').css('color','black');
              return false;
+        }if(iconLicense == "Free for commercial use (Include link to package)"){
+             $(".licenseName").unbind('click');
+             $(".licenseName").text(iconLicense);
+             $(".licenseName").attr('href','javascript:void(0)').css('color','black');
+             return false;
+        }if(iconLicense == "Creative Commons Attribution-No Derivative Works 3.0 Unported"){
+             $(".licenseName").unbind('click');
+             $(".licenseName").text(iconLicense);
+             $(".licenseName").css('color','#00B7FF').click(function(){
+                window.open("https://creativecommons.org/licenses/by-nd/3.0/");
+             });
+             return false;
+        }if(iconLicense == "GPL"){
+             $(".licenseName").unbind('click');
+             $(".licenseName").text(iconLicense);
+             $(".licenseName").css('color','#00B7FF').click(function(){
+                window.open("http://www.gnu.org/copyleft/gpl.html");
+             });
+             return false;
+        }if(iconLicense == "Creative Commons Attribution 2.5 Denmark"){
+             $(".licenseName").unbind('click');
+             $(".licenseName").text(iconLicense);
+             $(".licenseName").css('color','#00B7FF').click(function(){
+                window.open("https://creativecommons.org/licenses/by/2.5/dk/deed.en");
+             });
+             return false;
+        }if(iconLicense == "Free for commercial use (Email author for permission: buz@icondrawer.com)"){
+            $(".licenseName").unbind('click');
+            $(".licenseName").text(iconLicense);
+            $(".licenseName").css('color','#00B7FF');
+        }if(iconLicense == "Public Domain"){
+            $(".licenseName").unbind('click');
+            $(".licenseName").text(iconLicense);
+            $(".licenseName").attr('href','javascript:void(0)').css('color','black');
+        }if(iconLicense == "Creative Commons (Attribution 3.0 United States)"){
+            $(".licenseName").unbind('click');
+            $(".licenseName").text(iconLicense);
+            $(".licenseName").css('color','#00B7FF').click(function(){
+                window.open("http://creativecommons.org/licenses/by/3.0/us/");
+            });
+            return false;
+        }if(iconLicense == "Creative Commons Attribution 3.0 Unported (CC BY 3.0)"){
+            $(".licenseName").unbind('click');
+            $(".licenseName").text(iconLicense);
+            $(".licenseName").css('color','#00B7FF').click(function(){
+                window.open("https://creativecommons.org/licenses/by/3.0/");
+            });
+            return false;
+        }if(iconLicense == "Free for commercial use (Do not resell)"){
+            $(".licenseName").unbind('click');
+            $(".licenseName").text(iconLicense);
+            $(".licenseName").attr('href','javascript:void(0)').css('color','black');
+            return false;
+        }if(iconLicense == "Free for commercial use (Restrictions apply - read license)"){
+            $(".licenseName").unbind('click');
+            $(".licenseName").text(iconLicense);
+            $(".licenseName").attr('href','javascript:void(0)').css('color','black');
+            return false;
+        }if(iconLicense == "Free for commercial use (Redistribute with this license)"){
+            $(".licenseName").unbind('click');
+            $(".licenseName").text(iconLicense);
+            $(".licenseName").attr('href','javascript:void(0)').css('color','black');
+            return false;
+        }if (iconLicense == "Free for commercial use (Email author for permission)") {
+            $(".licenseName").unbind('click');
+            $(".licenseName").text(iconLicense);
+            $(".licenseName").css('color','#00B7FF');
+            return false;
+        }if(iconLicense == "Free for commercial use (Click here to read license)"){
+            $(".licenseName").unbind('click');
+            $(".licenseName").text("Free for commercial use");
+            $(".licenseName").css('color','#black');
+            return false;
+        }if(iconLicense == "Free for commercial use (Attribute author as specified in license)"){
+            $(".licenseName").unbind('click');
+            $(".licenseName").text(iconLicense);
+            $(".licenseName").css('color','black');
+            return false;
+        }if(iconLicense =="Free for commercial use (Contact author for permission)"){
+            $(".licenseName").unbind('click');
+            $(".licenseName").text(iconLicense);
+            $(".licenseName").css('color','black');
+            return false;
+        }if(iconLicense == "MIT License"){
+            $(".licenseName").unbind('click');
+            $(".licenseName").text(iconLicense);
+            $(".licenseName").css('color','#00B7FF').click(function(){
+                window.open("http://opensource.org/licenses/MIT");
+            });
+            return false;
+        }if(iconLicense == "LGPL"){
+            $(".licenseName").unbind('click');
+            $(".licenseName").text(iconLicense);
+            $(".licenseName").css('color','#00B7FF').click(function(){
+                window.open("http://www.gnu.org/licenses/lgpl.html");
+            });
+            return false;
+        }if(iconLicense == "Creative Commons Attribution-Share Alike 3.0 Unported License"){
+            $(".licenseName").unbind('click');
+            $(".licenseName").text(iconLicense);
+            $(".licenseName").css('color','#00B7FF').click(function(){
+                window.open("https://creativecommons.org/licenses/by-sa/3.0/");
+            });
+            return false; 
+        }if(iconLicense == "Free Art License"){
+            $(".licenseName").unbind('click');
+            $(".licenseName").text(iconLicense);
+            $(".licenseName").css('color','#00B7FF').click(function(){
+                window.open("http://artlibre.org/licence/lal/en/");
+            });
+            return false; 
         }
         
     });
