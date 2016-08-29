@@ -73,40 +73,47 @@ app.controller("IconsController", function($scope, $http) {
 
     function placeData(data) {
         $scope.Topics = data;
+
         for (var i = 0; i < $scope.Topics.icons.length; i++) {
             var downloadIcoUrl = "https://api.iconfinder.com/v2";
+            var downloadSvgUrl = "https://api.iconfinder.com/v2";
             if ($scope.Topics.icons[i].containers[0] === undefined) {
 
             } else {
                 var downloadUrlIco = $scope.Topics.icons[i].containers[0].download_url;
                 downloadIcoUrl += downloadUrlIco;
-
+                var svgUrl = null;
+                if($scope.Topics.icons[i] != undefined){     
+                        if($scope.Topics.icons[i].vector_sizes != undefined){
+                            svgUrl = $scope.Topics.icons[i].vector_sizes[0].formats[0].download_url;
+                            if(svgUrl != null){
+                                downloadSvgUrl += svgUrl;
+                            }
+                        }
+                    }
+                //console.log(downloadSvgUrl);
                 for (var j = 0; j < $scope.Topics.icons[i].raster_sizes.length; j++) {
                     var rasterSize = $scope.Topics.icons[i].raster_sizes[j].size_width;
                     var previewuUrl = $scope.Topics.icons[i].raster_sizes[j].formats[0].preview_url;
-                    //var iconName = $scope.Topics.icons[i].categories[0].name;
-                    //console.log($scope.Topics.icons[i]);
                     var downloadUrlName = "https://api.iconfinder.com/v2";
                     var iconId = $scope.Topics.icons[i].icon_id
                     downloadUrlName += $scope.Topics.icons[i].raster_sizes[j].formats[0].download_url;
                     linkDownloadPng.push(downloadUrlName);
-                    //console.log(linkDownloadPng);
-                    //console.log(downloadIcoUrl);
                     if (previewuUrl) {                
                         if (rasterSize === 512) {
-                            getData(previewuUrl, "", linkDownloadPng, downloadIcoUrl,iconId);
+                            getData(previewuUrl, "", linkDownloadPng, downloadIcoUrl,iconId,downloadSvgUrl);
                             checkNum++;
                             //console.log(linkDownloadPng);
                             break;
                         }
                         if (rasterSize === 256) {
-                            getData(previewuUrl, "", linkDownloadPng, downloadIcoUrl,iconId);
+                            getData(previewuUrl, "", linkDownloadPng, downloadIcoUrl,iconId,downloadSvgUrl);
                             checkNum++;
                             //console.log(linkDownloadPng);
                             break;
                         }
                         if (rasterSize === 128) {
-                            getData(previewuUrl, "", linkDownloadPng, downloadIcoUrl,iconId);
+                            getData(previewuUrl, "", linkDownloadPng, downloadIcoUrl,iconId,downloadSvgUrl);
                             checkNum++;
                             //console.log(linkDownloadPng);
                             break;
@@ -127,13 +134,14 @@ app.controller("IconsController", function($scope, $http) {
         $(".stloader").hide();
     }
 
-    function getData(previewuUrl, iconName, linkDownloadPng, downloadUrlIco,iconId) {
+    function getData(previewuUrl, iconName, linkDownloadPng, downloadUrlIco,iconId,downloadSvgUrl) {
         $scope.datas.push({
             imgUrl: previewuUrl,
             name: iconName,
             linkDownloadPngFile: linkDownloadPng,
             icoLink: downloadUrlIco,
-            saveIconId: iconId
+            saveIconId: iconId,
+            linkDownloadSvg:downloadSvgUrl
         })
     }
 
@@ -159,6 +167,13 @@ function showImageInModal(imageLink) {
     //var getName = $(imageLink).children().text();
     var getLink = $(imageLink).find(".dataLink").data('locations');
     var getIconLink = $(imageLink).find(".icoLink").text();
+    var getSvgLink = $(imageLink).find(".svgLink").text();
+    if(getSvgLink == "https://api.iconfinder.com/v2"){
+        $('.modalSvg').hide();
+    }else{
+         $('.modalSvg').show();
+         $('.linktoSvg').attr('href',''+ getSvgLink);
+    }
     var getIconId = $(imageLink).find(".icoID").text();
     getLicense(getIconId);
     var changToInt = [];
@@ -183,6 +198,7 @@ function showImageInModal(imageLink) {
     $(".mdImg").attr("src", "" + getImg + "");
     //$("#myModalLabel").text(""+getName+"");
     $('.linktoIcon').attr('href', '' + getIconLink);
+
 }
 
 function getLicense(getIconId){

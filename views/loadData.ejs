@@ -9,6 +9,7 @@
 	   						<img ng-src="{{data.imgUrl}}" alt="img01" class="img-center" onerror="imgError(this);" >
 	   						<h4 class="dataLink" data-locations='{{data.linkDownloadPngFile}}'></h4>
 							<h4 class="hideDataName icoLink">{{data.icoLink}}</h4>
+							<h4 class="hideDataName svgLink">{{data.linkDownloadSvg}}</h4>
 							<h4 class="hideDataName icoID">{{data.saveIconId}}</h4>
 	   					</a>
 	   				</li>
@@ -83,8 +84,14 @@
 				      	<div class="lpng" data-dismiss="modal">ไฟล์นามสกุล PNG</div>
 				      </div>
 				      <div class="modal-footer">
-				      	<div class="lpng" data-dismiss="modal">ไฟล์นามสกุล PNG</div>
+				      	<div class="lpng" data-dismiss="modal">ไฟล์นามสกุล ICO</div>
 				      	<a href="" class="linktoIcon">
+				      		<button class='btn btn-primary'>Download</button>
+				      	</a>
+				      </div>
+				      <div class="modal-footer modalSvg">
+				      	<div class="lpng" data-dismiss="modal">ไฟล์นามสกุล SVG</div>
+				      	<a href="" class="linktoSvg">
 				      		<button class='btn btn-primary'>Download</button>
 				      	</a>
 				      </div>
