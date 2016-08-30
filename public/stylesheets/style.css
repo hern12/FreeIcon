@@ -106,6 +106,16 @@ header{
     background-color: #fff;
     box-shadow: 0 4px 2px 1px rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
 }
+.leftPopularSearch1{
+    /*position:absolute;*/
+    /*right:983px; top:332px; bottom: 0;*/
+    padding: 0 0 1px 0;
+    margin-top: 10px;
+    width: 100%;
+    height: 295px;
+    background-color: #fff;
+    box-shadow: 0 4px 2px 1px rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+}
 .setAds{
   height: 700px;
   margin-bottom: 10px;
@@ -371,6 +381,15 @@ form {
   margin-top: 10px;
   box-shadow: 0 4px 2px 1px rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
   border-radius: 2px;
+  height: 443px;
+}
+.information1{
+  /*width: 90%;*/
+  background-color: #fff;
+  margin-top: 10px;
+  box-shadow: 0 4px 2px 1px rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  height: 480px;
 }
 .content{
 
@@ -468,4 +487,11 @@ hr{
 .webSiteName{
   padding-left: 5px;
   cursor: pointer;
+}
+.pngList{
+  padding: 0;
+}
+.pngList li{
+  list-style-type: none;
+  padding-bottom: 5px;
 }

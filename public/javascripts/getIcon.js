@@ -146,14 +146,14 @@ app.controller("IconsController", function($scope, $http) {
     }
 
 
-    $('#search').keypress(function(e) {
-        var key = e.which;
-        if (key == 13) // the enter key code
-        {
-            var getSearchtxt = $("#search").val();
-            $scope.listIcon(getSearchtxt);
-        }
-    });
+    // $('#search').keypress(function(e) {
+    //     var key = e.which;
+    //     if (key == 13) // the enter key code
+    //     {
+    //         var getSearchtxt = $("#search").val();
+    //         $scope.listIcon(getSearchtxt);
+    //     }
+    // });
 })
 
 function imgError(image) {

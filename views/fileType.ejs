@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <% include ./head %>
-    <title>ดาวน์โหลดไอคอนหน้าจอ ไอคอนเฟส ฟรี!!</title>
+    <title><%= pageTitle%></title>
     <meta name="description" content="เว็บแจกไอคอน มีไอคอนให้เลือกมากมาย ไม่ว่าจะเป็น ไอคอนหน้าจอ ไอคอนเฟส ไอคอนแฟ้มเอกสาร ไอคอนน่ารัก เป็นต้น และที่สำคัญ สามารถดาวน์โหลดได้ฟรีทุกอัน">
     <meta name="keywords" content="ไอคอน,ไอคอนเฟส,ไอคอนหน้าจอ,ไอคอน facebook,ไอคอนน่ารัก,ไอคอนน่ารักๆ,ไอคอนแอพ ">
     <meta property="og:title" content="ไอคอน">
@@ -12,37 +12,52 @@
     
 <!--     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script> -->
 </head>
-<body>
-	<% include ./menuTemplate %>
-	<div class="backmenu">
+<% include ./menuTemplate %>
+<div class="backmenu">
 		
-	</div>
-	<div class="container setpadding">
-		<% include ./banner %>
-	</div>	
-	<div class="container">
+</div>
+<div class="container setpadding">
+	<% include ./banner %>
+</div>	
+<div class="container">
 		<div class="row">
-			<div class="col-lg-9 information">
+			<div class="col-lg-9 information1">
 				<section class="content">
 					<div class="headContent">
-						<h4>ไอคอนหลากหลายรูปแบบสำหรับใช้งานในด้านต่าง เช่น ตกแต่งเว็บไซต์ ตกแต่งหน้าจอ ทำพรีเซ้น หรือปริ้นมาตกแต่งงานต่างๆ มีหลายขนาดให้เลือก</h4>
+						<h4>คุณสมบัติของไฟล์แต่ละชนิด</h4>
 					</div>
 				</section>
 				<section class="detail">
 					<div class="col-md-4 col-sm-6">
-						<h4 >ดาวน์โหลดฟรี</h4>
+						<h4>PNG</h4>
 						<hr>
-						<p>ไอคอนทั้งหมดสามารถดาวน์โหลดได้ฟรี และสามารถ Search หาข้อมูลโดยใช้ภาษาไทยได้</p>
+						<ul class="pngList">
+							<li>1. เป็นไฟล์ที่มีความละเอียดสูง</li>
+							<li>2. ภาพที่ได้มีความชัดกว่าไฟล์ JPG</li>
+							<li>3. เหมาะสำหรับใช้งานในเว็บไซต์</li>
+							<li>4. สามารถบีบอัดไฟล์ให้มีขนาดเล็กกว่า GIF ประมาณ 10-30%</li>
+							<li>5. สามารถทำพื้นหลังโปร่งใส (Transparency)</li>
+							<li>6. รองรับการแสดงผลของสีได้มากถึง 48 บิต</li>
+							<li>7. สามารถทำภาพเคลื่อนไหวได้แต่ต้องใช้ระบบ MNG (Multi-Image PNG) เข้าช่วย</li>
+						</ul>
 					</div>
 					<div class="col-md-4 col-sm-6">
-						<h4>ลิขสิทธิ์</h4>
+						<h4>ICO</h4>
 						<hr>
-						<p>แต่ละรูปจะบอกชนิดของลิขสิทธิ์เอาไว้ว่าสามารถนำไปใช้ในด้านไหนได้บ้างหรือ ควรจะใช้อย่างไรถึงจะถูกลิขสิทธิ์</p>
+						<ul class="pngList">
+							<li>1. ใช้เป็นสัญลักษณ์แทนโปรแกรม หรือ โฟล์เดอร์ต่างๆ</li>
+							<li>2. บ่งบอกถึงจุดประสงค์ของโปรแกรมนั้นๆว่าใช้ทำอะไร</li>
+							<li>3. มีความเป็นเอกลักษณ์ทำให้จดจำได้ง่าย</li>
+						</ul>
 					</div>
 					<div class="col-md-4 col-sm-6">
-						<h4>นามสกุลไฟล์</h4>
+						<h4>SVG</h4>
 						<hr>
-						<p>ไฟล์นามสกุล PNG, ICO และ SVG ซึ่งมีหน้าที่การทำงานต่างกัน<a href="./fileType"> อ่านเพิ่มเติม</a></p>
+						<ul class="pngList">
+							<li>1. เมื่อขยายหรือลดขนาด จะไม่มีผลกระทบต่อรูปชนิดนี้</li>
+							<li>2. ไฟล์ขนาดเล็ก ซึ่งถ้านำไปใช้งานในเว็บไซต์จะช่วยลดความล่าช้าในการโหลดข้อมูล</li>
+							<li>3. สามารถนำไปแก้ไขในโปรแกรม Adobe Illustrator ได้</li>
+						</ul>
 					</div>
 					<div class="col-md-12 col-sm-12 thanksTo">
 						<h4>ขอขอบคุณ</h4>
@@ -78,7 +93,7 @@
 				</div>
 			</div>
 			<div class="col-lg-3 setpaddingLeft">
-				<div class="leftPopularSearch">
+				<div class="leftPopularSearch1">
 				    <div class="CategoriesHead">
 						<h4>Popular Search</h4>
 					</div>
@@ -97,22 +112,5 @@
 				</div>
 			</div>
 		</div>
-	</div>                                    
-	<% include ./footer %>	
-</body>
-
-<script>
-	
-</script>
-<script type="text/javascript">
-//change active menu when click
-$(function() {
-   $("li.menuclick").click(function() {
-      // remove classes from all
-      $("li.menuclick").removeClass("active");
-      // add class to the one we clicked
-      $(this).addClass("active");
-   });
-});
-</script>
-</html>
+</div>                                    
+<% include ./footer %>	

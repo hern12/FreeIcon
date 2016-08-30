@@ -63,7 +63,9 @@ router.get('/camera', function(req, res, next) {
   res.render('camera',{title:getTxtData[13].title,des:getTxtData[13].description,
 						first:getTxtData[13].first,second:getTxtData[13].second,pageTitle:"Camera Icons"});
 });
-
+router.get('/fileType', function(req, res, next) {
+  res.render('fileType',{pageTitle:"ชนิดไฟล์",title:"หน้าที่ของไฟล์",des:"",first:getTxtData["PNG"],second:getTxtData["ICO"]});
+});
 // });
 router.post('/view1', function(req, res) {
 	res.setHeader('Content-Type', 'text/plain');
