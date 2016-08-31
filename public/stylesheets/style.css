@@ -169,10 +169,10 @@ header{
   font-size: 22px;
 }
 
-.SidexAds ul, .leftPopularSearch ul, .leftPopularDownload ul{
+.SidexAds ul, .leftPopularSearch ul, .leftPopularDownload ul, .leftPopularSearch1 ul{
   margin-top: 5px;
 }
-.SidexAds ul li a , .leftPopularSearch ul li a, .leftPopularDownload ul li a{
+.SidexAds ul li a , .leftPopularSearch ul li a, .leftPopularDownload ul li a,.leftPopularSearch1 ul li a{
   font-size: 20px;
   color:#333;
 }
