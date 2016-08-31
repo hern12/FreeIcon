@@ -4,67 +4,67 @@ var getThDic = require('../public/thaiToEng/thai2eng.json');
 var getTxtData = require('../public/TxtData/data.json');
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index',{title:"www.ไอคอน.com",des:"ศูนย์รวมไอคอนฟรี",first:getTxtData[""],second:getTxtData[""]});
+  res.render('index',{title:"www.ไอคอน.com",des:"ศูนย์รวมไอคอนฟรี",first:getTxtData[""],second:getTxtData[""],third:getTxtData[""]});
 });
 // router.get('/getDic', function(req, res){
 router.get('/search', function(req, res, next) {
   res.render('search',{title:getTxtData[2].title,des:getTxtData[2].description,
-						first:getTxtData[2].first,second:getTxtData[2].second,pageTitle:"Search icons"});
+						first:getTxtData[2].first,second:getTxtData[2].second,third:getTxtData[2].third,pageTitle:"Search icons"});
 });
 router.get('/facebook', function(req, res, next) {
   res.render('facebook',{title:getTxtData[0].title,des:getTxtData[0].description,
-						first:getTxtData[0].first,second:getTxtData[0].second,category:"facebook",pageTitle:"Facebook Icons"});
+						first:getTxtData[0].first,second:getTxtData[0].second,third:getTxtData[0].third,category:"facebook",pageTitle:"Facebook Icons"});
 });
 router.get('/twitter', function(req, res, next) {
   res.render('twitter',{title:getTxtData[1].title,des:getTxtData[1].description,
-						first:getTxtData[1].first,second:getTxtData[1].second,pageTitle:"Twitter Icons"});
+						first:getTxtData[1].first,second:getTxtData[1].second,third:getTxtData[1].third,pageTitle:"Twitter Icons"});
 });
 router.get('/instagram', function(req, res, next) {
   res.render('instagram',{title:getTxtData[3].title,des:getTxtData[3].description,
-						first:getTxtData[3].first,second:getTxtData[3].second,pageTitle:"Instagram Icons"});
+						first:getTxtData[3].first,second:getTxtData[3].second,third:getTxtData[3].third,pageTitle:"Instagram Icons"});
 });
 router.get('/google', function(req, res, next) {
   res.render('google',{title:getTxtData[4].title,des:getTxtData[4].description,
-						first:getTxtData[4].first,second:getTxtData[4].second,pageTitle:"Google Icons"});
+						first:getTxtData[4].first,second:getTxtData[4].second,third:getTxtData[4].third,pageTitle:"Google Icons"});
 });
 router.get('/in', function(req, res, next) {
   res.render('in',{title:getTxtData[5].title,des:getTxtData[5].description,
-						first:getTxtData[5].first,second:getTxtData[5].second,pageTitle:"In Icons"});
+						first:getTxtData[5].first,second:getTxtData[5].second,third:getTxtData[5].third,pageTitle:"In Icons"});
 });
 router.get('/blog', function(req, res, next) {
   res.render('blog',{title:getTxtData[6].title,des:getTxtData[6].description,
-						first:getTxtData[6].first,second:getTxtData[6].second,pageTitle:"Blog Icons"});
+						first:getTxtData[6].first,second:getTxtData[6].second,third:getTxtData[6].third,pageTitle:"Blog Icons"});
 });
 router.get('/windows', function(req, res, next) {
   res.render('windows',{title:getTxtData[7].title,des:getTxtData[7].description,
-						first:getTxtData[7].first,second:getTxtData[7].second,pageTitle:"Windows Icons"});
+						first:getTxtData[7].first,second:getTxtData[7].second,third:getTxtData[7].third,pageTitle:"Windows Icons"});
 });
 router.get('/ios', function(req, res, next) {
   res.render('ios',{title:getTxtData[8].title,des:getTxtData[8].description,
-						first:getTxtData[8].first,second:getTxtData[8].second,pageTitle:"IOS Icons"});
+						first:getTxtData[8].first,second:getTxtData[8].second,third:getTxtData[8].third,pageTitle:"IOS Icons"});
 });
 router.get('/android', function(req, res, next) {
   res.render('android',{title:getTxtData[9].title,des:getTxtData[9].description,
-						first:getTxtData[9].first,second:getTxtData[9].second,pageTitle:"Android Icons"});
+						first:getTxtData[9].first,second:getTxtData[9].second,third:getTxtData[9].third,pageTitle:"Android Icons"});
 });
 router.get('/computer', function(req, res, next) {
   res.render('computer',{title:getTxtData[10].title,des:getTxtData[10].description,
-						first:getTxtData[10].first,second:getTxtData[10].second,pageTitle:"Computer Icons"});
+						first:getTxtData[10].first,second:getTxtData[10].second,third:getTxtData[10].third,pageTitle:"Computer Icons"});
 });
 router.get('/iphone', function(req, res, next) {
   res.render('iphone',{title:getTxtData[11].title,des:getTxtData[11].description,
-						first:getTxtData[11].first,second:getTxtData[11].second,pageTitle:"Iphone Icons"});
+						first:getTxtData[11].first,second:getTxtData[11].second,third:getTxtData[11].third,pageTitle:"Iphone Icons"});
 });
 router.get('/printer', function(req, res, next) {
   res.render('printer',{title:getTxtData[12].title,des:getTxtData[12].description,
-						first:getTxtData[12].first,second:getTxtData[12].second,pageTitle:"Printer Icons"});
+						first:getTxtData[12].first,second:getTxtData[12].second,third:getTxtData[12].third,pageTitle:"Printer Icons"});
 });
 router.get('/camera', function(req, res, next) {
   res.render('camera',{title:getTxtData[13].title,des:getTxtData[13].description,
-						first:getTxtData[13].first,second:getTxtData[13].second,pageTitle:"Camera Icons"});
+						first:getTxtData[13].first,second:getTxtData[13].second,third:getTxtData[13].third,pageTitle:"Camera Icons"});
 });
 router.get('/fileType', function(req, res, next) {
-  res.render('fileType',{pageTitle:"ชนิดไฟล์",title:"หน้าที่ของไฟล์",des:"",first:getTxtData["PNG"],second:getTxtData["ICO"]});
+  res.render('fileType',{pageTitle:"ชนิดไฟล์",title:"หน้าที่ของไฟล์",des:"",first:getTxtData["PNG"],second:getTxtData["ICO"],third:getTxtData["SVG"].third});
 });
 // });
 router.post('/view1', function(req, res) {

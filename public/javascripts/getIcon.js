@@ -164,6 +164,8 @@ function imgError(image) {
 
 function showImageInModal(imageLink) {
     var getImg = $(imageLink).children().attr("ng-src");
+    var getImg1 = $(imageLink).find("img").attr("src");
+    console.log(getImg1);
     //var getName = $(imageLink).children().text();
     var getLink = $(imageLink).find(".dataLink").data('locations');
     var getIconLink = $(imageLink).find(".icoLink").text();
@@ -196,6 +198,9 @@ function showImageInModal(imageLink) {
     }
 
     $(".mdImg").attr("src", "" + getImg + "");
+    if(getImg1){
+        $(".mdImg").attr("src",""+getImg1+"");
+    }
     //$("#myModalLabel").text(""+getName+"");
     $('.linktoIcon').attr('href', '' + getIconLink);
 
