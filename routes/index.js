@@ -13,31 +13,31 @@ router.get('/search', function(req, res, next) {
 });
 router.get('/facebook', function(req, res, next) {
   res.render('facebook',{title:getTxtData[0].title,des:getTxtData[0].description,
-						first:getTxtData[0].first,second:getTxtData[0].second,third:getTxtData[0].third,category:"facebook",pageTitle:"Facebook Icons"});
+						first:getTxtData[0].first,second:getTxtData[0].second,third:getTxtData[0].third,category:"facebook",pageTitle:"ไอคอนเฟส"});
 });
 router.get('/twitter', function(req, res, next) {
   res.render('twitter',{title:getTxtData[1].title,des:getTxtData[1].description,
-						first:getTxtData[1].first,second:getTxtData[1].second,third:getTxtData[1].third,pageTitle:"Twitter Icons"});
+						first:getTxtData[1].first,second:getTxtData[1].second,third:getTxtData[1].third,pageTitle:"ไอคอนทวิตเตอร์"});
 });
 router.get('/instagram', function(req, res, next) {
   res.render('instagram',{title:getTxtData[3].title,des:getTxtData[3].description,
-						first:getTxtData[3].first,second:getTxtData[3].second,third:getTxtData[3].third,pageTitle:"Instagram Icons"});
+						first:getTxtData[3].first,second:getTxtData[3].second,third:getTxtData[3].third,pageTitle:"ไอคอนไอจี"});
 });
 router.get('/google', function(req, res, next) {
   res.render('google',{title:getTxtData[4].title,des:getTxtData[4].description,
-						first:getTxtData[4].first,second:getTxtData[4].second,third:getTxtData[4].third,pageTitle:"Google Icons"});
+						first:getTxtData[4].first,second:getTxtData[4].second,third:getTxtData[4].third,pageTitle:"ไอคอนกูเกิ้ล"});
 });
 router.get('/in', function(req, res, next) {
   res.render('in',{title:getTxtData[5].title,des:getTxtData[5].description,
-						first:getTxtData[5].first,second:getTxtData[5].second,third:getTxtData[5].third,pageTitle:"In Icons"});
+						first:getTxtData[5].first,second:getTxtData[5].second,third:getTxtData[5].third,pageTitle:"ไอคอนอิน"});
 });
 router.get('/blog', function(req, res, next) {
   res.render('blog',{title:getTxtData[6].title,des:getTxtData[6].description,
-						first:getTxtData[6].first,second:getTxtData[6].second,third:getTxtData[6].third,pageTitle:"Blog Icons"});
+						first:getTxtData[6].first,second:getTxtData[6].second,third:getTxtData[6].third,pageTitle:"ไอคอนบล็อค"});
 });
 router.get('/windows', function(req, res, next) {
   res.render('windows',{title:getTxtData[7].title,des:getTxtData[7].description,
-						first:getTxtData[7].first,second:getTxtData[7].second,third:getTxtData[7].third,pageTitle:"Windows Icons"});
+						first:getTxtData[7].first,second:getTxtData[7].second,third:getTxtData[7].third,pageTitle:"ไอคอนวินโดว์"});
 });
 router.get('/ios', function(req, res, next) {
   res.render('ios',{title:getTxtData[8].title,des:getTxtData[8].description,
