@@ -1,3 +1,4 @@
+
 @font-face {
     font-family: 'bangna_newregular';
     src: url('bangna-new-webfont.woff2') format('woff2'),
@@ -339,11 +340,16 @@ form {
 .TextBox{
   display:  table; 
   margin: 0 auto;
-  background-color: #fff;
+  /*background-color: #fff;*/
   box-shadow: 0 4px 2px 1px rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
   border-radius: 2px;
   width: 100%;
   height: 250px;
+   background: url(../img/giftly.png); 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 .TextBox ul{
     /*width: 100%;*/
