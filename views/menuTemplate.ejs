@@ -24,6 +24,12 @@
 				    	<span class="glyphicon icon-search"></span>
 				    	<span class="glyphicon menuLink"> Search Icons</span>
 				    </a>
+			    </li class="menuclick">
+			    <li class="menuclick comment">
+			    	<a href="./comment">
+				    	<span class="glyphicon icon-chat"></span>
+				    	<span class="glyphicon menuLink"> แนะนำติชม</span>
+				    </a>
 			    </li>
 		    </ul>
 		  </div>
@@ -107,5 +113,9 @@
 	  $("li.menuclick").removeClass("active");
       // add class to the one we clicked
       $(".menuWeb").addClass("active");
+	}else if(pathname == "/comment"){
+	  $("li.menuclick").removeClass("active");
+      // add class to the one we clicked
+      $(".comment").addClass("active");
 	}
 </script>

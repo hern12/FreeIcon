@@ -66,6 +66,9 @@ router.get('/camera', function(req, res, next) {
 router.get('/fileType', function(req, res, next) {
   res.render('fileType',{pageTitle:"ชนิดไฟล์",title:"หน้าที่ของไฟล์",des:"",first:getTxtData["PNG"],second:getTxtData["ICO"],third:getTxtData["SVG"]});
 });
+router.get('/comment', function(req, res, next) {
+  res.render('comment',{pageTitle:"แนะนำติชม",title:"ท่านมีความคิดเห็นอย่างไรครับ",des:"",first:getTxtData["PNG"],second:getTxtData["ICO"],third:getTxtData["SVG"]});
+});
 // });
 router.post('/view1', function(req, res) {
 	res.setHeader('Content-Type', 'text/plain');
