@@ -530,3 +530,7 @@ hr{
   background-color: white;
   box-shadow: 0 4px 2px 1px rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
 }
+.ruduceTxt{
+  font-size: 24px;
+  line-height: 35px;
+}
