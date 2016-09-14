@@ -23,7 +23,29 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.get('/token', function (req, res) {
 
+    const nf_token_url = "https://iconfinder.com/api/v2/oauth2/token";
+
+    request.post(
+        nf_token_url,
+        { form:{
+      grant_type:'jwt_bearer',
+      client_id: 'PWtSjDo84yB4v3CwXqFrPB9BT4bVZnNhHV1slHpFEZBQ2lPFDY4flgkcIPqgJN0S',
+      client_secret: '65E400G8sEcP2voBlmIwCVmgm2hEkDPN42D3Yj9vDcd2GC5SNAmguT87YVov5aeA'
+    }},
+        function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                  console.log(body);
+        delete body["token_type"];
+        res.send(body);
+            } else {
+        console.log('error');
+      }
+      }
+  );
+
+});
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
