@@ -63,6 +63,30 @@ router.get('/camera', function(req, res, next) {
   res.render('camera',{title:getTxtData[13].title,des:getTxtData[13].description,
 						first:getTxtData[13].first,second:getTxtData[13].second,third:getTxtData[13].third,pageTitle:"[รวม] ไอคอนกล้องถ่ายรูป ไอคอน Camera Icons โหลดฟรี | www.ไอคอน.com"});
 });
+router.get('/mouse', function(req, res, next) {
+  res.render('etc/mouse',{title:getTxtData[14].title,des:getTxtData[14].description,
+						first:getTxtData[14].first,second:getTxtData[14].second,third:getTxtData[14].third,pageTitle:"[รวม] ไอคอนเมาส์ iconเมาส์ โหลดฟรี | www.ไอคอน.com"});
+});
+router.get('/flower', function(req, res, next) {
+  res.render('etc/flower',{title:getTxtData[15].title,des:getTxtData[15].description,
+						first:getTxtData[15].first,second:getTxtData[15].second,third:getTxtData[15].third,pageTitle:"[รวม] ไอคอนดอกไม้ iconไอคอนดอกไม้ โหลดฟรี | www.ไอคอน.com"});
+});
+router.get('/line', function(req, res, next) {
+  res.render('etc/line',{title:getTxtData[16].title,des:getTxtData[16].description,
+						first:getTxtData[16].first,second:getTxtData[16].second,third:getTxtData[16].third,pageTitle:"[รวม] ไอคอนไลน์ iconLine โหลดฟรี | www.ไอคอน.com"});
+});
+router.get('/cute', function(req, res, next) {
+  res.render('etc/cute',{title:getTxtData[17].title,des:getTxtData[17].description,
+						first:getTxtData[17].first,second:getTxtData[17].second,third:getTxtData[17].third,pageTitle:"[รวม] ไอคอนคอมพิวเตอร์น่ารักๆ Cute Icon โหลดฟรี | www.ไอคอน.com"});
+});
+router.get('/heart', function(req, res, next) {
+  res.render('etc/heart',{title:getTxtData[18].title,des:getTxtData[18].description,
+						first:getTxtData[18].first,second:getTxtData[18].second,third:getTxtData[18].third,pageTitle:"[รวม] ไอคอนหัวใจสวยๆ Heart Icon โหลดฟรี | www.ไอคอน.com"});
+});
+router.get('/year', function(req, res, next) {
+  res.render('etc/year',{title:getTxtData[19].title,des:getTxtData[19].description,
+						first:getTxtData[19].first,second:getTxtData[19].second,third:getTxtData[19].third,pageTitle:"[รวม] ไอคอนปีใหม่ Happy New Year Icon โหลดฟรี | www.ไอคอน.com"});
+});
 router.get('/fileType', function(req, res, next) {
   res.render('fileType',{pageTitle:"ชนิดไฟล์",title:"หน้าที่ของไฟล์",des:"",first:getTxtData["PNG"],second:getTxtData["ICO"],third:getTxtData["SVG"]});
 });

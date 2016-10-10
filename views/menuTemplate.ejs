@@ -19,6 +19,7 @@
 		    	</li>
 				<% include ./socialMenu %>
 			    <% include ./WebsiteIcons %>
+			    <% include ./etc %>
 			    <li class="menuclick menuSearch">
 			    	<a href="./search">
 				    	<span class="glyphicon icon-search"></span>
@@ -113,6 +114,36 @@
 	  $("li.menuclick").removeClass("active");
       // add class to the one we clicked
       $(".menuWeb").addClass("active");
+	}else if(pathname == "/mouse"){
+	  window.iconValname = "mouse";
+	  $("li.menuclick").removeClass("active");
+      // add class to the one we clicked
+      $(".menuetc").addClass("active");
+	}else if(pathname == "/flower"){
+	  window.iconValname = "flower";
+	  $("li.menuclick").removeClass("active");
+      // add class to the one we clicked
+      $(".menuetc").addClass("active");
+	}else if(pathname == "/line"){
+	  window.iconValname = "line";
+	  $("li.menuclick").removeClass("active");
+      // add class to the one we clicked
+      $(".menuetc").addClass("active");
+	}else if(pathname == "/cute"){
+	  window.iconValname = "cute";
+	  $("li.menuclick").removeClass("active");
+      // add class to the one we clicked
+      $(".menuetc").addClass("active");
+	}else if(pathname == "/heart"){
+	  window.iconValname = "heart";
+	  $("li.menuclick").removeClass("active");
+      // add class to the one we clicked
+      $(".menuetc").addClass("active");
+	}else if(pathname == "/year"){
+	  window.iconValname = "year";
+	  $("li.menuclick").removeClass("active");
+      // add class to the one we clicked
+      $(".menuetc").addClass("active");
 	}else if(pathname == "/comment"){
 	  $("li.menuclick").removeClass("active");
       // add class to the one we clicked

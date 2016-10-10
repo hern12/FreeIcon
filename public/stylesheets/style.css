@@ -25,6 +25,9 @@ header{
 .webIcon:hover .weblist{
   display: block;
 }
+.menuetc:hover .etcMenu{
+  display: block;
+}
 .os:hover .osList{
   display: block;
 }

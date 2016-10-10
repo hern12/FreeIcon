@@ -61,8 +61,12 @@
 			checkText = searchText;
 			numberIcon =1;
 			if(checkText == null ||checkText == undefined){
-				checkText = "search";
+				checkText = "mouse";
 				queryData(checkText);
+			}
+			if(searchText == null || searchText==undefined || searchText == ""){
+				$(".stloader").hide();
+				return;
 			}
 			if($scope.post != undefined || $scope.post != null){
 				$http.post('/view1',$scope.post).
@@ -112,6 +116,7 @@
             	calculateTotalrang = Math.floor(totalCount / 35);
 	        }
 			function showUi() {
+				$scope.datas = [];
 	        	$(".stloader").show();
 	        }
 		}
